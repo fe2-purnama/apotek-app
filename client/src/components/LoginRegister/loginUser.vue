@@ -65,7 +65,7 @@ const login = async () => {
       </div>
       <div class="d-flex align-items-center justify-content-center ">
         <button id="btnLogin" class="btn btn-dark m-auto text-center w-50 mt-1 justify-content-center" type="submit">
-          Log in
+          Sign in
         </button>
       </div>
     </form>
