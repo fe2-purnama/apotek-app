@@ -1,0 +1,22 @@
+.navbar {
+  max-width: 4000px;
+  width: 1200px;
+  justify-content: center;
+  margin-left: -50px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.navbar #formsearch #search {
+  width: 350px;
+}
+.navbar #keranjang {
+  text-align: start;
+  justify-content: flex-start;
+  margin-left: 10px;
+}
+
+#NavMenu2 .Button {
+  gap: 10px;
+  margin: 10px;
+}/*# sourceMappingURL=style.css.map */

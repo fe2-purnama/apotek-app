@@ -1,0 +1,40 @@
+.navbar {
+  max-width: 4000px;
+  width: 1200px;
+  justify-content: center;
+  margin-left: -50px;
+}
+.navbar #formsearch #search {
+  width: 350px;
+}
+.navbar #keranjang {
+  text-align: start;
+  justify-content: flex-start;
+}
+
+#HeroMenu #Checkout img {
+  margin-top: -50px;
+}
+#HeroMenu #Checkout h5 {
+  font-family: "Baloo 2";
+  font-weight: 700;
+  margin-top: -30px;
+}
+#HeroMenu #Checkout h6 {
+  font-family: "Poppins";
+}
+#HeroMenu #TotalBayar {
+  padding: 50px;
+  width: 450px;
+  border-radius: 10px;
+  justify-content: center;
+  margin-left: 50px;
+  border: 1px solid black;
+}
+#HeroMenu #TotalBayar h4 {
+  font-family: "Baloo 2";
+  font-weight: 700;
+}
+#HeroMenu #TotalBayar h6 {
+  font-family: "Poppins";
+}/*# sourceMappingURL=style.css.map */

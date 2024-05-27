@@ -1,0 +1,115 @@
+#container{
+    margin-top: 80px;
+}
+
+#registration-form{
+
+
+
+    margin-top: 100px;
+
+    h3{
+        font-family: 'Baloo 2';
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    p{
+        font-family: 'Poppins';
+    }
+
+    .circle-container {
+            width: 100px;
+            height: 100px;
+            background-color: #a3a3a3;
+            border: 2px solid #a3a3a3;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: -80px;
+
+    }
+
+
+    label{
+        font-size: 15px;
+        font-family: 'Poppins';
+    }
+
+
+
+    .RESET{
+        font-family: 'Poppins';
+    }
+
+
+    #Daftar-di-sini{
+        font-family: 'Poppins';
+    }
+
+    #btnLogin{
+        margin-top: 20px;
+       text-align: center;
+        margin: 0 auto;
+    }
+}
+
+
+
+// Register
+
+#container2{
+    max-width: 800px;
+    margin-top: 60px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #f8f8f8;
+
+
+    .circle-container {
+            width: 100px;
+            height: 100px;
+            background-color: #a3a3a3;
+            border: 2px solid #a3a3a3;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: -50px;
+    
+        }
+
+    #create{
+        font-family: 'Baloo 2';
+        font-weight: 700;
+        text-align: center;
+    }
+
+    p{
+        font-family: 'Poppins';
+
+    }
+
+    #rowRegister {
+            box-shadow: #000000;
+            border-radius: 10px;
+            width: 700px;
+            justify-content: center;
+            align-content: center;
+            margin: 20px;
+            padding: 0 auto;
+            padding-left: -10px;
+    
+        }
+
+        #btnRegister{
+            width: 250px;
+            color: white;
+            font-family: 'Poppins';
+            justify-content: center;
+            border-radius: 10px;
+        }
+
+}
+
