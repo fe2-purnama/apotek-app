@@ -3,7 +3,7 @@
 </style>
 
 <template>
-    <section class="s">
+    <section class="">
         <nav class="navbar  navbar-expand-lg navbar-expand-md ">
             <div class="container-fluid">
                 <div class="d-flex">

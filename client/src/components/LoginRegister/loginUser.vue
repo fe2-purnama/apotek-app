@@ -61,7 +61,7 @@ const login = async () => {
         <p>Reset Password</p>
       </a>
       <div class="text-center mt-1" id="Daftar-di-sini">
-        Baru Pertama Mendaftar? <router-link to="/Hero">Daftar Disini</router-link>
+        Baru Pertama Mendaftar? <router-link to="/Home2">Daftar Disini</router-link>
       </div>
       <div class="d-flex align-items-center justify-content-center ">
         <button id="btnLogin" class="btn btn-dark m-auto text-center w-50 mt-1 justify-content-center" type="submit">
