@@ -24,17 +24,20 @@
                     <img src="@/assets/Apotek2.png" alt="">
                 </div>
             </div>
-
         </div>
+
+        <About/>
     </section>
 </template>
 
 <script>
-import NavMenu from "../NavMenu/NavMenu2.vue"
+import NavMenu from "../NavMenu/NavMenu2.vue";
+import About from "../About/contributors.vue"
 
 export default {
     components: {
         NavMenu,
+        About
     }
 }
 
