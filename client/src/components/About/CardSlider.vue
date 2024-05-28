@@ -54,7 +54,7 @@ export default {
 
 <style>
 #CONTRIBUTORS {
-    text-align: center;
+  text-align: center;
 }
 
 #photos {
@@ -63,47 +63,54 @@ export default {
 }
 
 .box {
-    text-align: center; /* Center the text under each box */
+  text-align: center;
+  /* Center the text under each box */
 }
 
-.box1, .box2, .box3, .box4, .box5, .box6 {
-    width: 100px;
-    height: 200px;
-    border-radius: 10px;
-    margin: 10px;
+.box1,
+.box2,
+.box3,
+.box4,
+.box5,
+.box6 {
+  width: 100px;
+  height: 200px;
+  border-radius: 10px;
+  margin: 10px;
 }
 
 .box1 {
-    background-color: #00e4e4;
+  background-color: #00e4e4;
 }
 
 .box2 {
-    background-color: #1aa7a7;
+  background-color: #1aa7a7;
 }
 
 .box3 {
-    background-color: #18587c;
+  background-color: #18587c;
 }
 
 .box4 {
-    background-color: #235e5e;
+  background-color: #235e5e;
 }
 
 .box5 {
-    background-color: #0c6854;
+  background-color: #0c6854;
 }
 
 .box6 {
-    background-color: #135f46;
+  background-color: #135f46;
 }
 
 p {
-    margin: 0; /* Remove default paragraph margin */
+  margin: 0;
+  /* Remove default paragraph margin */
 }
 
 /* SLIDER  */
-#slider-container { 
-    position: relative;
+#slider-container {
+  position: relative;
 }
 
 #slider {
@@ -119,29 +126,37 @@ p {
 }
 
 /* Vue transition styles */
-.slide-enter-active, .slide-leave-active {
+.slide-enter-active,
+.slide-leave-active {
   transition: all 0.5s ease;
 }
-.slide-enter, .slide-leave-to /* .slide-leave-active in <2.1.8 */ {
+
+.slide-enter,
+.slide-leave-to
+
+/* .slide-leave-active in <2.1.8 */
+  {
   transform: translateX(100%);
   opacity: 0;
 }
 
 button {
-    background-color: #006666;
-    border: 0;
-    color: white;
-    padding: 15px;
-    border-radius: 7px;
+  background-color: #006666;
+  border: 0;
+  color: white;
+  padding: 15px;
+  border-radius: 7px;
 }
 
 #prev {
-    position: absolute;
-  left: 0; /* Position the 'prev' button on the left */
+  position: absolute;
+  left: 0;
+  /* Position the 'prev' button on the left */
 }
 
 #next {
-        position: absolute;
-  right: 0; /* Position the 'next' button on the right */
+  position: absolute;
+  right: 0;
+  /* Position the 'next' button on the right */
 }
 </style>

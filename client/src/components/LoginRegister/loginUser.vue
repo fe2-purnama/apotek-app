@@ -4,14 +4,14 @@ import axios from 'axios';
 import { useRouter } from 'vue-router';
 
 
-const username = ref('');
+const username_user = ref('');
 const password = ref('');
 const router = useRouter();
 
 const login = async () => {
     try {
         const response = await axios.post('http://localhost:3000/api/auth/login', {
-            username: username.value,
+            username_user: username_user.value,
             password: password.value
         });
 
@@ -22,7 +22,7 @@ const login = async () => {
             console.log('JWT token:', token); // Periksa token JWT sebelum disimpan
             
             localStorage.setItem('jwt', token);
-            localStorage.setItem('username', response.data.data.username);
+            localStorage.setItem('username', response.data.data.username_user);
             
             // Redirect ke halaman home atau lakukan operasi lainnya setelah login berhasil
             router.push({ name: 'home' });

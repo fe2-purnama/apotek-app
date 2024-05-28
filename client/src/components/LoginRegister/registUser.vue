@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useRouter } from 'vue-router';
 
 const name = ref('');
-const username = ref('');
+const username_user = ref('');
 const email = ref('');
 const phone = ref('');
 const dob = ref('');
@@ -34,7 +34,7 @@ const register = async () => {
     errorMessage.value = 'Nama wajib diisi';
     return;
   }
-  if (!username.value) {
+  if (!username_user.value) {
     errorMessage.value = 'Username wajib diisi';
     return;
   }
@@ -70,7 +70,7 @@ const register = async () => {
   try {
     const response = await axios.post('http://localhost:3000/api/auth/register', {
       name: name.value,
-      username: username.value,
+      username: username_user.value,
       email: email.value,
       phone: phone.value,
       dob: dob.value,

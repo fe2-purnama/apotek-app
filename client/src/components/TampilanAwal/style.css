@@ -15,4 +15,10 @@
   margin-top: -30px;
   justify-content: center;
   text-align: center;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }/*# sourceMappingURL=style.css.map */

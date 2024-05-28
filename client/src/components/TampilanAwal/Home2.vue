@@ -26,18 +26,18 @@
             </div>
         </div>
 
-        <About/>
+        <CardSlider />
     </section>
 </template>
 
 <script>
 import NavMenu from "../NavMenu/NavMenu2.vue";
-import About from "../About/contributors.vue"
+import CardSlider from "../About/CardSlider.vue"
 
 export default {
     components: {
         NavMenu,
-        About
+        CardSlider
     }
 }
 
