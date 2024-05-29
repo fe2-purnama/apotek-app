@@ -6,7 +6,6 @@ import Dashboard from "../components/DashboardUser/Dashboard.vue";
 import Hero from "../components/Keranjang/Hero.vue";
 import NavMenu2 from "../components/NavMenu/NavMenu2.vue";
 import Home2 from "../components/TampilanAwal/Home2.vue";
-import CardSlider from "../components/About/CardSlider.vue";
 
 const routes = [
   { path: '/', name: 'login', component: LoginUser },
@@ -15,7 +14,6 @@ const routes = [
   { path: '/Hero', name: 'Hero', component: Hero },
   { path: '/NavMenu2', name: 'NavMenu2', component: NavMenu2 },
   { path: '/Home2', name: 'Home2', component: Home2 },
-  { path: '/CardSlider', name: 'CardSlider', component: CardSlider }
 ];
 
 const router = createRouter({

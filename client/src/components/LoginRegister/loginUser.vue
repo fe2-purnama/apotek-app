@@ -22,7 +22,7 @@ const login = async () => {
             console.log('JWT token:', token); // Periksa token JWT sebelum disimpan
             
             localStorage.setItem('jwt', token);
-            localStorage.setItem('username', response.data.data.username_user);
+            localStorage.setItem('username_user', response.data.data.username_user);
             
             // Redirect ke halaman home atau lakukan operasi lainnya setelah login berhasil
             router.push({ name: 'home' });
@@ -53,7 +53,7 @@ const login = async () => {
       <h3 class="text-center mt-3">Login To Your Account</h3>
 
       <label class="text-dark " or="username">Username:</label>
-      <input class="border border-black" type="text" id="username" v-model="username" placeholder="eg. Jogn_Doe123">
+      <input class="border border-black" type="text" id="username_user" v-model="username" placeholder="eg. Jogn_Doe123">
       <br>
       <label for="password">Password:</label>
       <input class="border border-black" type="password" id="password" v-model="password">

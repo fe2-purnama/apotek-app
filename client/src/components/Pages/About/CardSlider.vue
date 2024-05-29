@@ -35,26 +35,34 @@ export default {
 
 <template>
   <div id="CONTRIBUTORS">
-    <h1>Our Team</h1>
+    <h3 class="fw-bold fs-2">Our Team</h3>
   </div>
 
   <div id="slider-container">
     <div id="slider">
-      <button @click="prev">&#8592;</button> <!-- Left arrow symbol -->
+      <button @click="prev" class="arrow-button btn btn-lg"><i class="bi bi-caret-left-fill"></i></button>
+      <!-- Left arrow symbol -->
       <transition-group name="slide" tag="div" id="photos">
         <div class="box" v-for="(item, index) in displayedBoxes" :key="item.key">
           <div :class="'box' + (index + 1)"></div>
           <p>{{ item.word }}</p>
         </div>
       </transition-group>
-      <button @click="next">&#8594;</button> <!-- Right arrow symbol -->
+      <button @click="next" class="arrow-button btn btn-lg"><i class="bi bi-caret-right-fill"></i></button>
+      <!-- Right arrow symbol -->
     </div>
   </div>
 </template>
 
 <style>
 #CONTRIBUTORS {
-    text-align: center;
+  text-align: center;
+}
+
+h3 {
+  font-family: 'Baloo 2';
+  margin-top: 50px;
+  font-size: 58px;
 }
 
 #photos {
@@ -64,34 +72,40 @@ export default {
 }
 
 .box {
-    text-align: center; /* Center the text under each box */
+  text-align: center;
+  /* Center the text under each box */
 }
 
-.box1, .box2, .box3, .box4, .box5, .box6 {
-    width: 200px;
-    height: 200px;
-    border-radius: 10px;
-    margin: 10px;
+.box1,
+.box2,
+.box3,
+.box4,
+.box5,
+.box6 {
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  margin: 10px;
 }
 
 .box1 {
-    background-color: #00e4e4;
+  background-color: #00e4e4;
 }
 
 .box2 {
-    background-color: #1aa7a7;
+  background-color: #1aa7a7;
 }
 
 .box3 {
-    background-color: #18587c;
+  background-color: #18587c;
 }
 
 .box4 {
-    background-color: #235e5e;
+  background-color: #235e5e;
 }
 
 .box5 {
-    background-color: #0c6854;
+  background-color: #0c6854;
 }
 
 .box6 {
@@ -99,12 +113,15 @@ export default {
 }
 
 p {
-    margin: 0; /* Remove default paragraph margin */
+  margin: 0;
+  /* Remove default paragraph margin */
+  font-weight: bold;
+  /* Make the font bold */
 }
 
 /* SLIDER  */
-#slider-container { 
-    text-align: center;
+#slider-container {
+  text-align: center;
 }
 
 #slider {
@@ -120,31 +137,45 @@ p {
 }
 
 /* Vue transition styles */
-.slide-enter-active, .slide-leave-active {
+.slide-enter-active,
+.slide-leave-active {
   transition: all 0.5s ease;
 }
-.slide-enter, .slide-leave-to /* .slide-leave-active in <2.1.8 */ {
+
+.slide-enter,
+.slide-leave-to
+
+/* .slide-leave-active in <2.1.8 */
+  {
   transform: translateX(100%);
   opacity: 0;
 }
 
-button {
-    background-color: #646464;
-    border: 0;
-    color: #ffffff;
-    padding: 15px;
-    border-radius: 7px;
-    margin: 10px;
-    cursor: pointer;
+button.arrow-button {
+  background: none;
+  /* Remove background */
+  border: none;
+  /* Remove border */
+  color: #646464;
+  /* Set the color of the arrow */
+  font-size: 24px;
+  /* Increase the size of the arrow */
+  cursor: pointer;
+  padding: 0;
+  /* Remove padding */
+  margin: 10px;
+  width: 80px;
 }
 
 #prev {
-    position: absolute;
-  left: 0; /* Position the 'prev' button on the left */
+  position: absolute;
+  left: 0;
+  /* Position the 'prev' button on the left */
 }
 
 #next {
-        position: absolute;
-  right: 0; /* Position the 'next' button on the right */
+  position: absolute;
+  right: 0;
+  /* Position the 'next' button on the right */
 }
 </style>

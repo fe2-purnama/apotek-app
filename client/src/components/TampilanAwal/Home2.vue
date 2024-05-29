@@ -19,6 +19,28 @@
                         aman, dan terpercaya bagi seluruh masyarakat. Kami menyediakan berbagai macam obat-obatan,
                         vitamin, suplemen, serta produk kesehatan lainnya yang berkualitas tinggi dan terjangkau.</p>
                     <button class="btn btn-dark ">Lihat Selengkapnya</button>
+                    <div class="text-left mt-1 gap-1 d-flex "  id="icon">
+                        <button class="btn btn-outline-dark rounded-circle icon-btn btn-sm shadow-sm"
+                            data-aos="fade-down" data-aos-duration="1000" data-aos-delay="200"
+                            onclick="window.location.href='https://www.instagram.com/ginda.sann/'">
+                            <i class="bi bi-instagram"></i>
+                        </button>
+                        <button class="btn btn-outline-dark rounded-circle icon-btn btn-sm shadow-sm"
+                            data-aos="fade-down" data-aos-duration="1000" data-aos-delay="500"
+                            onclick="window.location.href='https://www.tiktok.com/@ginda.sann'">
+                            <i class="bi bi-tiktok"></i>
+                        </button>
+                        <button class="btn btn-outline-dark rounded-circle icon-btn btn-sm shadow-sm"
+                            data-aos="fade-down" data-aos-duration="1000" data-aos-delay="800"
+                            onclick="window.location.href='#'">
+                            <i class="bi bi-facebook"></i>
+                        </button>
+                        <button class="btn btn-outline-dark rounded-circle icon-btn btn-sm shadow-sm"
+                            data-aos="fade-down" data-aos-duration="1000" data-aos-delay="1100"
+                            onclick="window.location.href='#'">
+                            <i class="bi bi-whatsapp"></i>
+                        </button>
+                    </div>
                 </div>
                 <div class="col-5 text-center">
                     <img src="@/assets/Apotek2.png" alt="">
@@ -32,7 +54,7 @@
 
 <script>
 import NavMenu from "../NavMenu/NavMenu2.vue";
-import CardSlider from "../About/CardSlider.vue"
+import CardSlider from "../Pages/About/CardSlider.vue"
 
 export default {
     components: {

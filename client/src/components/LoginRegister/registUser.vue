@@ -121,7 +121,7 @@ const register = async () => {
               placeholder="Cth: Charlize Scavendish">
             <br>
             <label for="username">Username:</label>
-            <input class="border border-black form-control" type="text" id="username" v-model="username"
+            <input class="border border-black form-control" type="text" id="username_user" v-model="username"
               placeholder="Cth: Charlize_Scavendish">
             <br>
             <label for="phone">No Handphone:</label>

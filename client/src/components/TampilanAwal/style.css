@@ -10,6 +10,23 @@
   font-weight: 400;
   font-size: 18px;
 }
+#HeroMenu #Collom1 #icon {
+  margin-left: -10px;
+}
+#HeroMenu #Collom1 .icon-btn {
+  margin: 10px;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 24px;
+  padding: 0;
+}
+#HeroMenu #Collom1 .icon-btn i {
+  font-size: 24px;
+}
 #HeroMenu img {
   width: 450px;
   margin-top: -30px;
