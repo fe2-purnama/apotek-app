@@ -7,6 +7,9 @@ import Hero from "../components/Keranjang/Hero.vue";
 import NavMenu2 from "../components/NavMenu/NavMenu2.vue";
 import Home2 from "../components/TampilanAwal/Home2.vue";
 import CardSlider from "../components/About/CardSlider.vue";
+import AddObat from '../components/contohCrudForm/addObat.vue';
+import ListObat from '../components/contohCrudForm/listObat.vue';
+import EditObat from '../components/contohCrudForm/editObat.vue'
 
 const routes = [
   { path: '/', name: 'login', component: LoginUser },
@@ -15,7 +18,10 @@ const routes = [
   { path: '/Hero', name: 'Hero', component: Hero },
   { path: '/NavMenu2', name: 'NavMenu2', component: NavMenu2 },
   { path: '/Home2', name: 'Home2', component: Home2 },
-  { path: '/CardSlider', name: 'CardSlider', component: CardSlider }
+  { path: '/CardSlider', name: 'CardSlider', component: CardSlider },
+  { path: '/add-obat', name: 'addObat', component: AddObat },
+  { path: '/list-obat', name: 'listObat', component: ListObat },
+  { path: '/editObat/:id', name: 'EditObat', component: EditObat }
 ];
 
 const router = createRouter({

@@ -1,12 +1,13 @@
 const express = require('express');
-const { registerUser, loginUser, logoutUser, getUser, getAllProduk } = require('../controllers/authControllers');
+const { authenticateToken } = require('../middleware/authenticateToken');
+const { registerUser, loginUser, logoutUser, getUser, updateProfile } = require('../controllers/authControllers');
 const router = express.Router();
 
 router.post('/register', registerUser);
 router.post('/login', loginUser);
 router.get('/logout', logoutUser);
 router.get('/getUser', getUser);
-router.get('/produk', getAllProduk);
+router.put('/update-profile', authenticateToken, updateProfile);
 
 module.exports = router;
 

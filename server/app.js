@@ -9,6 +9,7 @@ var app = express()
 var port = 3000
 
 var authRouter = require('../server/router/authRouter')
+const obatRouter = require('./router/obatRouter');
 const { notFound, errorHandler } = require('./middleware/errorHandler')
 
 dotenv.config()
@@ -18,6 +19,7 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended:true }))
 app.use(cookieParser())
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
 app.use(morgan('dev'))
 
@@ -28,6 +30,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/auth', authRouter)
+app.use('/api', obatRouter)
 
 app.use(notFound);
 app.use(errorHandler);

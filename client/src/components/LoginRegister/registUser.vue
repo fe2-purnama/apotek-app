@@ -3,12 +3,12 @@ import { ref } from 'vue';
 import axios from 'axios';
 import { useRouter } from 'vue-router';
 
-const name = ref('');
+const name_user = ref('');
 const username_user = ref('');
-const email = ref('');
-const phone = ref('');
-const dob = ref('');
-const password = ref('');
+const email_user = ref('');
+const phone_user = ref('');
+const dob_user = ref('');
+const password_user= ref('');
 const confirmPassword = ref('');
 const errorMessage = ref('');
 const successMessage = ref('');
@@ -30,7 +30,7 @@ const register = async () => {
   successMessage.value = '';
 
   // Basic validation checks
-  if (!name.value) {
+  if (!name_user.value) {
     errorMessage.value = 'Nama wajib diisi';
     return;
   }
@@ -38,19 +38,19 @@ const register = async () => {
     errorMessage.value = 'Username wajib diisi';
     return;
   }
-  if (!email.value) {
+  if (!email_user.value) {
     errorMessage.value = 'Email wajib diisi';
     return;
   }
-  if (!phone.value) {
+  if (!phone_user.value) {
     errorMessage.value = 'No Handphone wajib diisi';
     return;
   }
-  if (!dob.value) {
+  if (!dob_user.value) {
     errorMessage.value = 'Tanggal Lahir wajib diisi';
     return;
   }
-  if (!password.value) {
+  if (!password_user.value) {
     errorMessage.value = 'Password wajib diisi';
     return;
   }
@@ -58,23 +58,23 @@ const register = async () => {
     errorMessage.value = 'Konfirmasi Password wajib diisi';
     return;
   }
-  if (password.value.length < 6 || !/[A-Z]/.test(password.value) || !/[0-9]/.test(password.value) || !/[!@#$%^&*]/.test(password.value)) {
+  if (password_user.value.length < 6 || !/[A-Z]/.test(password_user.value) || !/[0-9]/.test(password_user.value) || !/[!@#$%^&*]/.test(password_user.value)) {
     errorMessage.value = 'Password harus minimal 6 karakter, meliputi Huruf Kapital, Tanda Baca, dan Angka.';
     return;
   }
-  if (password.value !== confirmPassword.value) {
+  if (password_user.value !== confirmPassword.value) {
     errorMessage.value = 'Konfirmasi password tidak sama';
     return;
   }
 
   try {
     const response = await axios.post('http://localhost:3000/api/auth/register', {
-      name: name.value,
-      username: username_user.value,
-      email: email.value,
-      phone: phone.value,
-      dob: dob.value,
-      password: password.value
+      name_user: name_user.value,
+      username_user: username_user.value,
+      email_user: email_user.value,
+      phone_user: phone_user.value,
+      dob_user: dob_user.value,
+      password_user: password_user.value
     });
     if (response.data.success) {
       successMessage.value = 'Registrasi berhasil! Mengarahkan ke halaman login...';
@@ -117,29 +117,29 @@ const register = async () => {
         <div class="row">
           <div class="col-6">
             <label for="name">Nama Lengkap:</label>
-            <input class="border border-black form-control" type="text" id="name" v-model="name"
+            <input class="border border-black form-control" type="text" id="name_user" v-model="name_user"
               placeholder="Cth: Charlize Scavendish">
             <br>
             <label for="username">Username:</label>
-            <input class="border border-black form-control" type="text" id="username" v-model="username"
+            <input class="border border-black form-control" type="text" id="username_user" v-model="username_user"
               placeholder="Cth: Charlize_Scavendish">
             <br>
             <label for="phone">No Handphone:</label>
-            <input class="border border-black form-control" type="tel" id="phone" v-model="phone"
+            <input class="border border-black form-control" type="tel" id="phone_user" v-model="phone_user"
               placeholder="Cth: 081228567215">
             <br>
             <label for="dob">Tanggal Lahir:</label>
-            <input class="border border-black form-control" type="date" id="dob" v-model="dob">
+            <input class="border border-black form-control" type="date" id="dob_user" v-model="dob_user">
           </div>
           <div class="col-6">
             <label for="email">Email:</label>
-            <input class="border border-black form-control" type="text" id="email" v-model="email"
+            <input class="border border-black form-control" type="text" id="email_user" v-model="email_user"
               placeholder="Cth: nama@email.com">
             <br>
             <label for="password">Password:</label>
             <div class="input-group">
-              <input :type="showPassword ? 'text' : 'password'" class="border border-black form-control" id="password"
-                v-model="password">
+              <input :type="showPassword ? 'text' : 'password'" class="border border-black form-control" id="password_user"
+                v-model="password_user">
               <span class="input-group-text" @click="togglePasswordVisibility">
                 <i :class="showPassword ? 'bi bi-eye-slash' : 'bi bi-eye'"></i>
               </span>
@@ -159,7 +159,7 @@ const register = async () => {
           <button class="btn btn-black bg-black" type="submit" id="btnRegister">Daftar</button>
         </div>
         <div class="text-center mt-1" id="Daftar-di-sini">
-          Sudah mempunyai akun? <router-link to="/Login">Login</router-link>
+          Sudah mempunyai akun? <router-link to="/">Login</router-link>
         </div>
       </form>
     </div>

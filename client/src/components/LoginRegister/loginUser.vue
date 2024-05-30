@@ -5,25 +5,22 @@ import { useRouter } from 'vue-router';
 
 
 const username_user = ref('');
-const password = ref('');
+const password_user = ref('');
 const router = useRouter();
 
 const login = async () => {
     try {
         const response = await axios.post('http://localhost:3000/api/auth/login', {
             username_user: username_user.value,
-            password: password.value
+            password_user: password_user.value,
         });
 
         console.log('Response:', response); // Periksa seluruh respons dari server
 
         if (response.data.success) {
-            const token = response.data.token;
-            console.log('JWT token:', token); // Periksa token JWT sebelum disimpan
-            
-            localStorage.setItem('jwt', token);
-            localStorage.setItem('username', response.data.data.username_user);
-            
+          const authToken = response.data.authToken;
+          localStorage.setItem('authToken', authToken);
+          localStorage.setItem('userData', JSON.stringify(response.data.data))
             // Redirect ke halaman home atau lakukan operasi lainnya setelah login berhasil
             router.push({ name: 'home' });
         } else {
@@ -53,10 +50,10 @@ const login = async () => {
       <h3 class="text-center mt-3">Login To Your Account</h3>
 
       <label class="text-dark " or="username">Username:</label>
-      <input class="border border-black" type="text" id="username" v-model="username" placeholder="eg. Jogn_Doe123">
+      <input class="border border-black" type="text" id="username_user" v-model="username_user" placeholder="eg. Jogn_Doe123">
       <br>
       <label for="password">Password:</label>
-      <input class="border border-black" type="password" id="password" v-model="password">
+      <input class="border border-black" type="password" id="password_user" v-model="password_user">
       <a class="RESET" href="#">
         <p>Reset Password</p>
       </a>
