@@ -18,9 +18,18 @@ const login = async () => {
         console.log('Response:', response); // Periksa seluruh respons dari server
 
         if (response.data.success) {
+<<<<<<< HEAD
           const authToken = response.data.authToken;
           localStorage.setItem('authToken', authToken);
           localStorage.setItem('userData', JSON.stringify(response.data.data))
+=======
+            const token = response.data.token;
+            console.log('JWT token:', token); // Periksa token JWT sebelum disimpan
+            
+            localStorage.setItem('jwt', token);
+            localStorage.setItem('username_user', response.data.data.username_user);
+            
+>>>>>>> 0731c809c9f4e63bd48dea3fea0746f61e6821ea
             // Redirect ke halaman home atau lakukan operasi lainnya setelah login berhasil
             router.push({ name: 'home' });
         } else {
@@ -50,7 +59,11 @@ const login = async () => {
       <h3 class="text-center mt-3">Login To Your Account</h3>
 
       <label class="text-dark " or="username">Username:</label>
+<<<<<<< HEAD
       <input class="border border-black" type="text" id="username_user" v-model="username_user" placeholder="eg. Jogn_Doe123">
+=======
+      <input class="border border-black" type="text" id="username_user" v-model="username" placeholder="eg. Jogn_Doe123">
+>>>>>>> 0731c809c9f4e63bd48dea3fea0746f61e6821ea
       <br>
       <label for="password">Password:</label>
       <input class="border border-black" type="password" id="password_user" v-model="password_user">

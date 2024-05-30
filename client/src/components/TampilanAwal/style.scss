@@ -11,6 +11,27 @@
             font-weight: 400;
             font-size: 18px;
         }
+
+        #icon{
+            margin-left: -10px;
+        }
+
+                .icon-btn {
+                    margin: 10px;
+                    width: 45px;
+                    height: 45px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 50%;
+                    font-size: 24px;
+                    padding: 0;
+                 
+                }
+        
+                .icon-btn i {
+                    font-size: 24px;
+                }
     }
 
     img{
@@ -26,3 +47,6 @@ nav{
         top: 0;
         z-index: 1000;
 }
+
+
+

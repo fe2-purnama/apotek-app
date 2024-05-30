@@ -3,12 +3,12 @@ export default {
   data() {
     return {
       boxes: [
-        { key: 1, word: 'Inovasi' },
-        { key: 2, word: 'Kreativitas' },
-        { key: 3, word: 'Integritas' },
-        { key: 4, word: 'Kerjasama' },
-        { key: 5, word: 'Keunggulan' },
-        { key: 6, word: 'Visi' }
+        { key: 1, word: 'Yeriko' },
+        { key: 2, word: 'Ari' },
+        { key: 3, word: 'Ibnu' },
+        { key: 4, word: 'Amir' },
+        { key: 5, word: 'Rizqy' },
+        { key: 6, word: 'Ginda' },
       ],
       currentIndex: 0
     };
@@ -35,19 +35,21 @@ export default {
 
 <template>
   <div id="CONTRIBUTORS">
-    <h1>Tim Kami</h1>
+    <h3 class="fw-bold fs-2">Our Team</h3>
   </div>
 
   <div id="slider-container">
     <div id="slider">
-      <button @click="prev">Prev</button>
+      <button @click="prev" class="arrow-button btn btn-lg"><i class="bi bi-caret-left-fill"></i></button>
+      <!-- Left arrow symbol -->
       <transition-group name="slide" tag="div" id="photos">
         <div class="box" v-for="(item, index) in displayedBoxes" :key="item.key">
           <div :class="'box' + (index + 1)"></div>
           <p>{{ item.word }}</p>
         </div>
       </transition-group>
-      <button @click="next">Next</button>
+      <button @click="next" class="arrow-button btn btn-lg"><i class="bi bi-caret-right-fill"></i></button>
+      <!-- Right arrow symbol -->
     </div>
   </div>
 </template>
@@ -57,9 +59,16 @@ export default {
   text-align: center;
 }
 
+h3 {
+  font-family: 'Baloo 2';
+  margin-top: 50px;
+  font-size: 58px;
+}
+
 #photos {
   display: flex;
   justify-content: center;
+  margin-bottom: 20px;
 }
 
 .box {
@@ -73,7 +82,7 @@ export default {
 .box4,
 .box5,
 .box6 {
-  width: 100px;
+  width: 200px;
   height: 200px;
   border-radius: 10px;
   margin: 10px;
@@ -100,17 +109,19 @@ export default {
 }
 
 .box6 {
-  background-color: #135f46;
+  background-color: #2a7d8b;
 }
 
 p {
   margin: 0;
   /* Remove default paragraph margin */
+  font-weight: bold;
+  /* Make the font bold */
 }
 
 /* SLIDER  */
 #slider-container {
-  position: relative;
+  text-align: center;
 }
 
 #slider {
@@ -140,12 +151,20 @@ p {
   opacity: 0;
 }
 
-button {
-  background-color: #006666;
-  border: 0;
-  color: white;
-  padding: 15px;
-  border-radius: 7px;
+button.arrow-button {
+  background: none;
+  /* Remove background */
+  border: none;
+  /* Remove border */
+  color: #646464;
+  /* Set the color of the arrow */
+  font-size: 24px;
+  /* Increase the size of the arrow */
+  cursor: pointer;
+  padding: 0;
+  /* Remove padding */
+  margin: 10px;
+  width: 80px;
 }
 
 #prev {
