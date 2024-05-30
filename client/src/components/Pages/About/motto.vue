@@ -3,10 +3,17 @@
 </script>
 
 <template>
+
+<div class="header">
+    <p style="text-align: center; font-size: 35px; font-weight: 500;">
+        Kenapa harus memilih kami ?
+    </p>
+</div>
+
 <div class="container">
   <div class="row">
     <div class="col">
-      <img src="./src/assets/scientist.jpg" alt="Poin Pertama" class="img-responsive">
+      <img src="F:\html-css, JQuery, JS\Capstone\about\src\assets\scientist.jpg" alt="Poin Pertama" class="img-responsive">
     </div>
     <div class="col">
       <h2>Poin Pertama</h2>
@@ -20,13 +27,13 @@
       <p>Tim apoteker kami profesional dan berpengalaman, siap memberikan konsultasi kesehatan yang tepat dan akurat. Selain itu, apotek kami juga menjamin keaslian dan kualitas produk, memastikan bahwa setiap obat yang Anda beli adalah produk resmi dan aman digunakan.</p>
     </div>
     <div class="col">
-        <img src="./src/assets/doctor.jpg" alt="Poin Kedua" class="img-responsive">
+        <img src="F:\html-css, JQuery, JS\Capstone\about\src\assets\doctor.jpg" alt="Poin Kedua" class="img-responsive">
     </div>
   </div>
   
   <div class="row">
     <div class="col">
-      <img src="./assets/medicine.jpg" alt="Poin Ketiga" class="img-responsive">
+      <img src="F:\html-css, JQuery, JS\Capstone\about\src\assets\medicine.jpg" alt="Poin Ketiga" class="img-responsive">
     </div>
     <div class="col">
       <h2>Poin Ketiga</h2>
@@ -39,6 +46,7 @@
 </template>
 
 <style scoped>
+
   .container {
     max-width: 1170px;
     margin: auto;
@@ -65,6 +73,12 @@
 
   p {
     text-align: justify;
+  }
+
+  img {
+    width: 400px;
+    height: auto;
+    border-radius: 15px;
   }
   h2 {
   text-align: center;
