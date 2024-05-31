@@ -4,7 +4,16 @@ const fs = require('fs');
 
 const getAllObat = async (req, res) => {
     try {
-        const obatList = await Obat.find();
+        const searchQuery = req.query.search || '';
+        const regex = new RegExp(searchQuery, 'i');
+        
+        const obatList = await Obat.find({
+            $or: [
+                { nama_obat: { $regex: regex } },
+                { kategori_obat: { $regex: regex } },
+                { deskripsi_obat: { $regex: regex } }
+            ]
+        });
         res.status(200).json({
             success: true,
             data: obatList
@@ -13,8 +22,8 @@ const getAllObat = async (req, res) => {
         res.status(500).json({
             success: false,
             error: error.message
-        });
-    }
+    });
+}
 };
 
 const getObatById = async (req, res) => {
