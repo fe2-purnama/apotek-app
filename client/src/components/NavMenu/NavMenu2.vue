@@ -19,8 +19,10 @@
                         <a class="nav-link" href="#">Keunggulan</a>
                     </div>
                     <div class="Button">
-                        <button type="button" class="btn btn-dark ">Login</button>
-                        <button type="button" class="btn btn-outline-dark ms-2">Register</button>
+                        <button type="button" class="btn btn-dark "
+                            onclick="window.location.href='/login'">Login</button>
+                        <button type="button" class="btn btn-outline-dark ms-2"
+                            onclick="window.location.href='/RegistUser'">Register</button>
                     </div>
                 </div>
             </div>

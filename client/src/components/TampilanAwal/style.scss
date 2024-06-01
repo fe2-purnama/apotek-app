@@ -1,40 +1,41 @@
-#HeroMenu{
+#HeroMenu {
     margin-left: 15px;
-    #Collom1{
-        h1{
+
+    #Collom1 {
+        h1 {
             font-family: 'Baloo 2';
             font-weight: 700;
         }
 
-        p{
+        p {
             font-family: 'Poppins';
-            font-weight: 400;
+            font-weight: 300;
             font-size: 18px;
         }
 
-        #icon{
+        #icon {
             margin-left: -10px;
         }
 
-                .icon-btn {
-                    margin: 10px;
-                    width: 45px;
-                    height: 45px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    border-radius: 50%;
-                    font-size: 24px;
-                    padding: 0;
-                 
-                }
-        
-                .icon-btn i {
-                    font-size: 24px;
-                }
+        .icon-btn {
+            margin: 10px;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 24px;
+            padding: 0;
+
+        }
+
+        .icon-btn i {
+            font-size: 24px;
+        }
     }
 
-    img{
+    img {
         width: 450px;
         margin-top: -30px;
         justify-content: center;
@@ -42,11 +43,35 @@
     }
 }
 
-nav{
+nav {
     position: sticky;
-        top: 0;
-        z-index: 1000;
+    top: 0;
+    z-index: 1000;
 }
 
+#tentangKami {
+
+    border-radius: 10px;
+    margin-top: -50px;
+
+    h3{
+        font-family: 'Baloo 2';
+        font-weight: 700;
+    }
+
+    .card {
+        border-radius: 15px;
+        p{
+            font-family: 'Poppins';
+            font-weight: 300;
+        }
+    }
+
+    .card img {
+        border-radius: 15px 15px 0 0;
+        width: 100%;
+        height: 100%;
+    }
 
 
+}

@@ -12,8 +12,8 @@ import ListObat from "../components/contohCrudForm/listObat.vue";
 import EditObat from "../components/contohCrudForm/editObat.vue";
 
 const routes = [
-  { path: '/', name: 'login', component: LoginUser },
-  { path: '/register', name: 'register', component: RegistUser },
+  { path: '/login', name: 'login', component: LoginUser },
+  { path: '/RegistUser', name: 'RegistUser', component: RegistUser },
   { path: '/home', name: 'home', component: HomeUser },
   { path: '/Hero', name: 'Hero', component: Hero },
   { path: '/NavMenu2', name: 'NavMenu2', component: NavMenu2 },

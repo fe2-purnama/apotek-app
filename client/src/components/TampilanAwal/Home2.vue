@@ -43,6 +43,37 @@
         </div>
 
         <CardSlider />
+
+        <br />
+
+        <div class="container  shadow px-5 pt-4" id="tentangKami">
+            <h3 class="text-center mb-5">Kenapa Harus Kami</h3>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-md-6 mb-4" v-for="(feature, index) in features" :key="index">
+                            <div class="text-center border border-secondary rounded shadow-sm">
+                                <i :class="feature.icon" class="fs-1 text-success"></i>
+                                <h5 class="mt-3">{{ feature.title }}</h5>
+                                <p class="text-muted">
+                                    We get insulted by others, lose trust for those We get back freezes
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card p-3 shadow-sm">
+                        <img src="@/assets/doctor.jpg" class="card-img-top" alt="...">
+                        <div>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa possimus quisquam suscipit
+                                pariatur eum vel eius sed libero ut optio!</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </section>
 </template>
 
@@ -51,7 +82,9 @@ import Swal from 'sweetalert2'
 import NavMenu from "../NavMenu/NavMenu2.vue";
 import CardSlider from "../Pages/About/CardSlider.vue"
 
+
 export default {
+name: 'Features',
     components: {
         NavMenu,
         CardSlider
@@ -65,14 +98,23 @@ export default {
                 confirmButtonText: 'Tutup'
             });
         }
-    }
+    },
+
+    data() {
+    return {
+      features: [
+        
+            { icon: 'bi bi-capsule', title: 'Apotek Terlengkap' },
+            { icon: 'bi bi-capsule', title: 'Apotek Terlengkap' },
+            { icon: 'bi bi-heart-pulse-fill', title: 'Pelayanan Nyaman' },
+            { icon: 'bi bi-clipboard2-pulse-fill', title: 'Konsultasi Dokter' },
+       
+      ]
+    };
+  }
 }
 </script>
 
 <style scoped>
-/* Include your styles here */
-.responsive-img {
-    max-width: 100%;
-    height: auto;
-}
+@import 'style.css';
 </style>

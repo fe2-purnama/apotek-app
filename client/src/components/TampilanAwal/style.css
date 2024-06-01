@@ -7,7 +7,7 @@
 }
 #HeroMenu #Collom1 p {
   font-family: "Poppins";
-  font-weight: 400;
+  font-weight: 300;
   font-size: 18px;
 }
 #HeroMenu #Collom1 #icon {
@@ -38,4 +38,25 @@ nav {
   position: sticky;
   top: 0;
   z-index: 1000;
+}
+
+#tentangKami {
+  border-radius: 10px;
+  margin-top: -50px;
+}
+#tentangKami h3 {
+  font-family: "Baloo 2";
+  font-weight: 700;
+}
+#tentangKami .card {
+  border-radius: 15px;
+}
+#tentangKami .card p {
+  font-family: "Poppins";
+  font-weight: 300;
+}
+#tentangKami .card img {
+  border-radius: 15px 15px 0 0;
+  width: 100%;
+  height: 100%;
 }/*# sourceMappingURL=style.css.map */
