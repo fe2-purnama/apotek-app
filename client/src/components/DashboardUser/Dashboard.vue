@@ -19,16 +19,24 @@
         <div class="card-body">
           <h5 class="card-title">Update Biodata</h5>
           <form class="edit-form" @submit.prevent="handleSubmit">
-            <input class="form-control mb-2" type="text" placeholder="Edit Nama" v-model="name" />
-            <div v-if="!name" class="alert alert-danger">Nama tidak boleh kosong</div>
-            <select class="form-control mb-2" v-model="gender">
-              <option value="" disabled selected>Pilih Jenis Kelamin</option>
-              <option value="Pria">Pria</option>
-              <option value="Wanita">Wanita</option>
-            </select>
-            <div v-if="!gender" class="alert alert-danger">Jenis Kelamin tidak boleh kosong</div>
-            <input class="form-control mb-2" type="tel" placeholder="Edit No Handphone" v-model="phone" />
-            <div v-if="!phone" class="alert alert-danger">No Handphone tidak boleh kosong</div>
+            <div class="form-group" :class="{ 'has-error': nameError }">
+              <input class="form-control mb-2" type="text" placeholder="Edit Nama" v-model="name" />
+              <div v-if="nameError" class="error"><i class="fa fa-exclamation-circle"></i> Nama tidak boleh kosong</div>
+            </div>
+            <div class="form-group" :class="{ 'has-error': genderError }">
+              <select class="form-control mb-2" v-model="gender">
+                <option value="" disabled selected>Pilih Jenis Kelamin</option>
+                <option value="Pria">Pria</option>
+                <option value="Wanita">Wanita</option>
+              </select>
+              <div v-if="genderError" class="error"><i class="fa fa-exclamation-circle"></i> Jenis Kelamin tidak boleh
+                kosong</div>
+            </div>
+            <div class="form-group" :class="{ 'has-error': phoneError }">
+              <input class="form-control mb-2" type="tel" placeholder="Edit No Handphone" v-model="phone" />
+              <div v-if="phoneError" class="error"><i class="fa fa-exclamation-circle"></i> No Handphone tidak boleh
+                kosong</div>
+            </div>
             <button class="btn btn-dark" type="submit">Submit</button>
           </form>
         </div>
@@ -42,15 +50,22 @@
 
 <script setup>
 import { ref } from 'vue';
-import NavMenu from '../NavMenu/NavMenu.vue';  // Pastikan jalur ini benar
+import NavMenu from '../NavMenu/NavMenu.vue';
 
 const name = ref('');
 const gender = ref('');
 const phone = ref('');
 const alertVisible = ref(false);
+const nameError = ref(false);
+const genderError = ref(false);
+const phoneError = ref(false);
 
 const handleSubmit = () => {
-  if (name.value && gender.value && phone.value) {
+  nameError.value = !name.value;
+  genderError.value = !gender.value;
+  phoneError.value = !phone.value;
+
+  if (!nameError.value && !genderError.value && !phoneError.value) {
     alertVisible.value = true;
     setTimeout(() => {
       alertVisible.value = false;
@@ -61,6 +76,8 @@ const handleSubmit = () => {
 </script>
 
 <style scoped>
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+
 .dashboard {
   display: flex;
   flex-direction: column;
@@ -75,7 +92,6 @@ const handleSubmit = () => {
 
 .spacer {
   height: 20px;
-  /* Tambahkan spacer untuk jarak antara judul dan card */
 }
 
 .card {
@@ -110,8 +126,42 @@ const handleSubmit = () => {
   flex-direction: column;
 }
 
+.edit-form .form-group {
+  position: relative;
+}
+
 .edit-form .form-control {
   margin-bottom: 10px;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.edit-form .form-group.has-error .form-control {
+  border-color: #dc3545;
+  background-color: #f8d7da;
+  padding-right: 2.25rem;
+}
+
+.edit-form .error {
+  color: #dc3545;
+  font-size: 0.875rem;
+  position: absolute;
+  top: 50%;
+  right: 0.75rem;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+}
+
+.edit-form .error i {
+  margin-right: 5px;
 }
 
 .edit-form .btn {
@@ -132,9 +182,13 @@ const handleSubmit = () => {
   border: 1px solid #c3e6cb;
 }
 
-.alert-danger {
-  background-color: #f8d7da;
-  color: #721c24;
-  border: 1px solid #f5c6cb;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

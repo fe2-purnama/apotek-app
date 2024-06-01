@@ -1,3 +1,99 @@
+<template>
+  <section class="container shadow justify-content-center" id="container2">
+    <div class="d-flex justify-content-center align-items-center">
+      <div class="circle-container">
+        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-person-add"
+          viewBox="0 0 16 16">
+          <path
+            d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4" />
+          <path
+            d="M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z" />
+        </svg>
+      </div>
+    </div>
+    <h2 id="create">Membuat Akun Baru</h2>
+    <p id="createP" class="text-center">isi form di bawah untuk membuat account baru</p>
+    <div class="row justify-content-center" id="rowRegister">
+      <form id="registration-form" @submit.prevent="register" class="col-10">
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group" :class="{ 'has-error': !name_user }">
+              <label for="name_user">Nama Lengkap:</label>
+              <input class="border border-black form-control" type="text" id="name_user" v-model="name_user"
+                placeholder="Cth: Charlize Scavendish">
+              <div v-if="!name_user" class="error"><i class="fa fa-exclamation-circle"></i> Nama wajib diisi</div>
+            </div>
+            <br>
+            <div class="form-group" :class="{ 'has-error': !username_user }">
+              <label for="username_user">Username:</label>
+              <input class="border border-black form-control" type="text" id="username_user" v-model="username_user"
+                placeholder="Cth: Charlize_Scavendish">
+              <div v-if="!username_user" class="error"><i class="fa fa-exclamation-circle"></i> Username wajib diisi
+              </div>
+            </div>
+            <br>
+            <div class="form-group" :class="{ 'has-error': !phone_user }">
+              <label for="phone_user">No Handphone:</label>
+              <input class="border border-black form-control" type="tel" id="phone_user" v-model="phone_user"
+                placeholder="Cth: 081228567215">
+              <div v-if="!phone_user" class="error"><i class="fa fa-exclamation-circle"></i> No Handphone wajib diisi
+              </div>
+            </div>
+            <br>
+            <div class="form-group" :class="{ 'has-error': !dob_user }">
+              <label for="dob_user">Tanggal Lahir:</label>
+              <input class="border border-black form-control" type="date" id="dob_user" v-model="dob_user">
+              <div v-if="!dob_user" class="error"><i class="fa fa-exclamation-circle"></i> Tanggal Lahir wajib diisi
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group" :class="{ 'has-error': !email_user }">
+              <label for="email_user">Email:</label>
+              <input class="border border-black form-control" type="text" id="email_user" v-model="email_user"
+                placeholder="Cth: nama@email.com">
+              <div v-if="!email_user" class="error"><i class="fa fa-exclamation-circle"></i> Email wajib diisi</div>
+            </div>
+            <br>
+            <div class="form-group" :class="{ 'has-error': !password_user }">
+              <label for="password_user">Password:</label>
+              <div class="input-group">
+                <input :type="showPassword ? 'text' : 'password'" class="border border-black form-control"
+                  id="password_user" v-model="password_user">
+                <span class="input-group-text" @click="togglePasswordVisibility">
+                  <i :class="showPassword ? 'bi bi-eye-slash' : 'bi bi-eye'"></i>
+                </span>
+                <div v-if="!password_user" class="error"><i class="fa fa-exclamation-circle"></i> Password wajib diisi
+                </div>
+              </div>
+              <p>Password harus minimal 6 karakter, meliputi Huruf Kapital, Tanda Baca, dan Angka.</p>
+            </div>
+            <br>
+            <div class="form-group" :class="{ 'has-error': !confirmPassword || (confirmPassword !== password_user) }">
+              <label for="confirm-password">Konfirmasi Password:</label>
+              <div class="input-group">
+                <input :type="showConfirmPassword ? 'text' : 'password'" class="border border-black form-control"
+                  id="confirm-password" v-model="confirmPassword">
+                <span class="input-group-text" @click="toggleConfirmPasswordVisibility">
+                  <i :class="showConfirmPassword ? 'bi bi-eye-slash' : 'bi bi-eye'"></i>
+                </span>
+                <div v-if="!confirmPassword || (confirmPassword !== password_user)" class="error"><i
+                    class="fa fa-exclamation-circle"></i> Konfirmasi password tidak sama</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="justify-content-center d-flex align-items-center mt-3">
+          <button class="btn btn-black bg-black" type="submit" id="btnRegister">Daftar</button>
+        </div>
+        <div class="text-center mt-1" id="Daftar-di-sini">
+          Sudah mempunyai akun? <router-link to="/">Login</router-link>
+        </div>
+      </form>
+    </div>
+  </section>
+</template>
+
 <script setup>
 import { ref } from 'vue';
 import axios from 'axios';
@@ -8,7 +104,7 @@ const username_user = ref('');
 const email_user = ref('');
 const phone_user = ref('');
 const dob_user = ref('');
-const password_user= ref('');
+const password_user = ref('');
 const confirmPassword = ref('');
 const errorMessage = ref('');
 const successMessage = ref('');
@@ -91,81 +187,6 @@ const register = async () => {
 };
 </script>
 
-<template>
-  <section class="container shadow justify-content-center" id="container2">
-    <div class="d-flex justify-content-center align-items-center">
-      <div class="circle-container">
-        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-person-add"
-          viewBox="0 0 16 16">
-          <path
-            d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4" />
-          <path
-            d="M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z" />
-        </svg>
-      </div>
-    </div>
-    <h2 id="create">Membuat Akun Baru</h2>
-    <p id="createP" class="text-center">isi form di bawah untuk membuat account baru</p>
-    <div v-if="errorMessage" class="alert alert-danger" role="alert">
-      {{ errorMessage }}
-    </div>
-    <div v-if="successMessage" class="alert alert-success" role="alert">
-      {{ successMessage }}
-    </div>
-    <div class="row justify-content-center" id="rowRegister">
-      <form id="registration-form" @submit.prevent="register" class="col-10">
-        <div class="row">
-          <div class="col-6">
-            <label for="name">Nama Lengkap:</label>
-            <input class="border border-black form-control" type="text" id="name_user" v-model="name_user"
-              placeholder="Cth: Charlize Scavendish">
-            <br>
-            <label for="username">Username:</label>
-            <input class="border border-black form-control" type="text" id="username_user" v-model="username_user"
-              placeholder="Cth: Charlize_Scavendish">
-            <br>
-            <label for="phone">No Handphone:</label>
-            <input class="border border-black form-control" type="tel" id="phone_user" v-model="phone_user"
-              placeholder="Cth: 081228567215">
-            <br>
-            <label for="dob">Tanggal Lahir:</label>
-            <input class="border border-black form-control" type="date" id="dob_user" v-model="dob_user">
-          </div>
-          <div class="col-6">
-            <label for="email">Email:</label>
-            <input class="border border-black form-control" type="text" id="email_user" v-model="email_user"
-              placeholder="Cth: nama@email.com">
-            <br>
-            <label for="password">Password:</label>
-            <div class="input-group">
-              <input :type="showPassword ? 'text' : 'password'" class="border border-black form-control" id="password_user"
-                v-model="password_user">
-              <span class="input-group-text" @click="togglePasswordVisibility">
-                <i :class="showPassword ? 'bi bi-eye-slash' : 'bi bi-eye'"></i>
-              </span>
-            </div>
-            <p>Password harus minimal 6 karakter, meliputi Huruf Kapital, Tanda Baca, dan Angka.</p>
-            <label for="confirm-password">Konfirmasi Password:</label>
-            <div class="input-group">
-              <input :type="showConfirmPassword ? 'text' : 'password'" class="border border-black form-control"
-                id="confirm-password" v-model="confirmPassword">
-              <span class="input-group-text" @click="toggleConfirmPasswordVisibility">
-                <i :class="showConfirmPassword ? 'bi bi-eye-slash' : 'bi bi-eye'"></i>
-              </span>
-            </div>
-          </div>
-        </div>
-        <div class="justify-content-center d-flex align-items-center mt-3">
-          <button class="btn btn-black bg-black" type="submit" id="btnRegister">Daftar</button>
-        </div>
-        <div class="text-center mt-1" id="Daftar-di-sini">
-          Sudah mempunyai akun? <router-link to="/">Login</router-link>
-        </div>
-      </form>
-    </div>
-  </section>
-</template>
-
 <style scoped>
 @import './style.css';
 
@@ -205,6 +226,21 @@ const register = async () => {
 
 #btnRegister:hover {
   background-color: #464646;
+}
+
+.form-group.has-error input {
+  border-color: #e74c3c;
+}
+
+.form-group.has-error .error {
+  display: block;
+  color: #e74c3c;
+  font-size: 0.875em;
+  margin-top: 5px;
+}
+
+.error i {
+  margin-right: 5px;
 }
 
 .alert {
