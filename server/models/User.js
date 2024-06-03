@@ -32,6 +32,9 @@ const userSchema = new mongoose.Schema({
     phone_user: {
         type: String,
         required: [true, "Nomor telepon tidak boleh kosong!"]
+    },
+    gender_user: {
+        type: String
     }
 })
 

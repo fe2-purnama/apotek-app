@@ -52,8 +52,6 @@ const login = async () => {
       <label class="text-dark " or="username">Username:</label>
       <input class="border border-black" type="text" id="username_user" v-model="username_user"
         placeholder="eg. Jogn_Doe123">
-      <input class="border border-black" type="text" id="username_user" v-model="username"
-        placeholder="eg. Jogn_Doe123">
       <br>
       <label for="password">Password:</label>
       <input class="border border-black" type="password" id="password_user" v-model="password_user">

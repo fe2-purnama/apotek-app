@@ -9,7 +9,7 @@ var app = express()
 var port = 3000
 
 var authRouter = require('../server/router/authRouter')
-const obatRouter = require('./router/obatRouter');
+const productRouter = require('./router/productRouter');
 const { notFound, errorHandler } = require('./middleware/errorHandler')
 
 dotenv.config()
@@ -23,20 +23,14 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 
 app.use(morgan('dev'))
 
-app.get('/', (req, res) => {
-  res.status(200).json({
-    pesan: "Ini pesan"
-  })
-})
-
 app.use('/api/auth', authRouter)
-app.use('/api', obatRouter)
+app.use('/api/', productRouter)
 
 app.use(notFound);
 app.use(errorHandler);
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`port : ${port}`)
 })
 
 mongoose.connect(process.env.DB,{

@@ -1,12 +1,12 @@
 const express = require('express');
-const { getAllObat, addObat, editObat, deleteObat, getObatById } = require('../controllers/obatController');
+const { getAllProduct, addProduct, editProduct, deleteProduct, getProductById } = require('../controllers/productController');
 const multer = require('multer');
 const router = express.Router();
 const fs = require('fs')
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, 'public/img/obat');
+      cb(null, 'public/img/product');
     },
     filename: function (req, file, cb) {
       const originalName = file.originalname;
@@ -19,12 +19,12 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-router.get('/obat', getAllObat);
-router.post('/obat', upload.single('gambar_obat'), addObat);
-router.get('/obat/:id', getObatById);
-router.put('/obat/:id', upload.single('gambar_obat'), editObat);
-router.delete('/obat/:id', deleteObat);
-router.post('/uploadNewImageObat', upload.single('image'), (req, res) => {
+router.get('/product', getAllProduct);
+router.post('/product', upload.single('image_product'), addProduct);
+router.get('/product/:id', getProductById);
+router.put('/product/:id', upload.single('image_product'), editProduct);
+router.delete('/product/:id', deleteProduct);
+router.post('/uploadNewImageProduct', upload.single('image'), (req, res) => {
     try {
         const imageUrl = req.file.filename;
         res.status(200).json({ success: true, imageUrl });
@@ -35,7 +35,7 @@ router.post('/uploadNewImageObat', upload.single('image'), (req, res) => {
 router.delete('/deleteImage', (req, res) => {
     try {
         const imageUrl = req.query.url;
-        fs.unlinkSync(`public/img/obat/${imageUrl}`);
+        fs.unlinkSync(`public/img/product/${imageUrl}`);
         res.status(200).json({ success: true, message: 'Gambar berhasil dihapus' });
     } catch (error) {
         res.status(500).json({ success: false, error: error.message });

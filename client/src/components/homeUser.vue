@@ -18,6 +18,16 @@
         <label for="phone">No Handphone:</label>
         <input type="text" id="phone" v-model="updatedUser.phone_user" required>
       </div>
+
+      <div>
+        <label for="gender">Gender:</label>
+        <select id="gender" v-model="updatedUser.gender_user" required>
+          <option value="">Pilih Gender</option>
+          <option value="Pria">Pria</option>
+          <option value="Wanita">Wanita</option>
+        </select>
+      </div>
+      
       <button type="submit">Update</button>
     </form>
 
