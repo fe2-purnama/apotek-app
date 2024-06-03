@@ -4,15 +4,26 @@ const fs = require('fs');
 const getAllProduct = async (req, res) => {
     try {
         const searchQuery = req.query.search || '';
-        const regex = new RegExp(searchQuery, 'i');
-        
-        const productList = await Product.find({
-            $or: [
-                { name_product: { $regex: regex } },
-                { category_product: { $regex: regex } },
-                { description_product: { $regex: regex } }
-            ]
-        });
+        let productList;
+
+        if (!searchQuery) {
+            productList = await Product.find();
+        } else {
+            const words = searchQuery.split(' ').filter(word => word);
+            const regexArray = words.map(word => new RegExp(word, 'i'));
+
+            productList = await Product.find({
+                $and: regexArray.map(regex => ({
+                    $or: [
+                        { name_product: { $regex: regex } },
+                        { category_product: { $regex: regex } },
+                        { description_product: { $regex: regex } },
+                        { composition_product: { $regex: regex } }
+                    ]
+                }))
+            });
+        }
+
         res.status(200).json({
             success: true,
             data: productList
@@ -21,8 +32,8 @@ const getAllProduct = async (req, res) => {
         res.status(500).json({
             success: false,
             error: error.message
-    });
-}
+        });
+    }
 };
 
 const getProductById = async (req, res) => {
