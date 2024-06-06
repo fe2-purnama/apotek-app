@@ -1,0 +1,27 @@
+.cardSlider .img-wrapper {
+  max-width: 100%;
+  height: 17vw;
+}
+.cardSlider img {
+  max-width: 100%;
+  max-height: 100%;
+}
+@media screen and (min-width: 576px) {
+  .cardSlider .carousel-inner {
+    display: flex;
+  }
+  .cardSlider .carosel-item {
+    display: block;
+    margin-right: 0;
+    flex: 0 0 33.3333333333%;
+  }
+  .cardSlider .img-wrapper {
+    height: 23vw;
+  }
+}
+.cardSlider .carousel-inner {
+  padding: 1em;
+}
+.cardSlider .card {
+  margin: 0.5em;
+}/*# sourceMappingURL=style.css.map */

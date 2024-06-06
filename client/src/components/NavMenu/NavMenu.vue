@@ -3,8 +3,8 @@
 </style>
 
 <template>
-    <section class="">
-        <nav class="navbar bg-body-tertiary  navbar-expand-lg navbar-expand-md ">
+    <section class="justify-content-center bg-white w-full">
+        <nav class="navbar bg-body-white  navbar-expand-lg navbar-expand-md shadow-sm rounded p-2">
             <div class="container-fluid">
                 <div class="d-flex">
                     <a class="navbar-brand">Logo Apotek</a>

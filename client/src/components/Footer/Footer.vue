@@ -12,7 +12,7 @@
 
 <template>
   <footer>
-    <div class="footer-container" id="footer">
+    <div class="footer-container w-full" id="footer">
       <div class="footer-section">
         <h4>Hubungi Kami</h4>
         <div class="social-icons">
