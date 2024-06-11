@@ -11,7 +11,8 @@ var port = 3000;
 var authRouter = require("../server/router/authRouter");
 const productRouter = require("./router/productRouter");
 const cartRouter = require("./router/cartRouter");
-const adminRouter = require('./router/adminRouter');
+const transactionRouter = require("./router/transactionRouter");
+const adminRouter = require("./router/adminRouter");
 const { notFound, errorHandler } = require("./middleware/errorHandler");
 
 dotenv.config();
@@ -28,7 +29,8 @@ app.use(morgan("dev"));
 app.use("/api/auth", authRouter);
 app.use("/api/product", productRouter);
 app.use("/api/cart", cartRouter);
-app.use('/api/admin', adminRouter);
+app.use("/api/transaction", transactionRouter);
+app.use("/api/admin", adminRouter);
 app.use(notFound);
 app.use(errorHandler);
 

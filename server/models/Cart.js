@@ -11,6 +11,10 @@ const cartSchema = new mongoose.Schema({
     required: [true],
     ref: "User",
   },
+  transaction_code: {
+    type: String,
+    required: [false],
+  },
   quantity: {
     type: Number,
     required: [true],

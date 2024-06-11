@@ -3,17 +3,15 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const Produk = require("../models/Cart");
 const Cart = require("../models/Cart");
-const Product = require("../models/Product"); // Pastikan path ini benar
-const mongoose = require("mongoose"); // Import mongoose
+const Product = require("../models/Product");
+const mongoose = require("mongoose");
+const Transaction = require("../models/Transaction");
 
-// Function to get user ID from request
 function getUserIdFromToken(req) {
   try {
-    // Ambil token dari header Authorization
-    const token = req.headers.authorization.split(" ")[1]; // 'Bearer TOKEN_HERE'
-    // Verifikasi dan decode token menggunakan secret key dari .env
+    const token = req.headers.authorization.split(" ")[1];
     const decoded = jwt.verify(token, process.env.JWT_SEC);
-    return decoded.id; // Pastikan payload token Anda memiliki field 'id'
+    return decoded.id;
   } catch (error) {
     console.error("Error getting user ID from token:", error);
     return null;
@@ -32,23 +30,30 @@ const addProductToCart = async (req, res) => {
   }
 
   try {
-    // Cek apakah sudah ada kode_cart untuk user ini
+    const product = await Product.findById(id_product);
+    if (!product) {
+      return res.status(404).send("Product not found");
+    }
+
+    if (product.stock_product < quantity) {
+      return res.status(400).send("Insufficient stock available");
+    }
     let cart = await Cart.findOne({
       id_user: userId,
       id_product: id_product,
       status: false,
+      transaction_code: null,
     });
 
     if (!cart) {
-      // Insert new item into the cart if it does not exist or if the existing item has been checked out (status 1)
       cart = new Cart({
         id_product,
         id_user: userId,
         quantity,
-        status: false, // 0 means not checked out
+        status: false,
+        transaction_code: null,
       });
     } else {
-      // If the item exists and has not been checked out, just update the quantity
       cart.quantity += quantity;
     }
 
@@ -69,7 +74,6 @@ const viewProductsInCart = async (req, res) => {
     return res.status(401).send("User not authenticated");
   }
 
-  // Correctly convert userId to ObjectId using 'new'
   const objectIdUserId = new mongoose.Types.ObjectId(userId);
 
   try {
@@ -105,7 +109,68 @@ const viewProductsInCart = async (req, res) => {
   }
 };
 
+const editCartItemQuantity = async (req, res) => {
+  const userId = getUserIdFromToken(req);
+  if (!userId) {
+    return res.status(401).send("User not authenticated");
+  }
+
+  const { cartItemId, quantityChange, operation } = req.body;
+  if (!cartItemId || quantityChange == null || !operation) {
+    return res
+      .status(400)
+      .send("Cart item ID, quantity change, and operation type are required");
+  }
+
+  try {
+    const cartItem = await Cart.findOne({
+      _id: cartItemId,
+      id_user: userId,
+      status: false,
+    }).populate("id_product");
+
+    if (!cartItem) {
+      return res.status(404).send("Cart item not found");
+    }
+
+    const product = await Product.findById(cartItem.id_product);
+    if (!product) {
+      return res.status(404).send("Product not found");
+    }
+
+    if (operation === "increase") {
+      if (product.stock_product < cartItem.quantity + quantityChange) {
+        return res.status(400).send("Insufficient stock available");
+      }
+      cartItem.quantity += quantityChange;
+    } else if (operation === "decrease") {
+      if (cartItem.quantity < quantityChange) {
+        return res
+          .status(400)
+          .send("Decrease amount exceeds the current quantity");
+      }
+      cartItem.quantity -= quantityChange;
+      if (cartItem.quantity === 0) {
+        await cartItem.remove();
+        return res.status(200).send("Cart item has been removed");
+      }
+    } else {
+      return res.status(400).send("Invalid operation type");
+    }
+
+    await cartItem.save();
+    res.status(200).send({
+      message: `Cart item quantity ${operation}d successfully`,
+      data: cartItem,
+    });
+  } catch (error) {
+    console.error(`Error ${operation}ing cart item quantity:`, error);
+    res.status(500).send("Internal Server Error");
+  }
+};
+
 module.exports = {
   addProductToCart,
   viewProductsInCart,
+  editCartItemQuantity,
 };
