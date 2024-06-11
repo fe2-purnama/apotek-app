@@ -1,6 +1,11 @@
+:root {
+  margin: 0;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 #NavMenu2 {
   max-width: 4000px;
-  width: 1300px;
+  width: 1200px;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -16,4 +21,6 @@
 #NavMenu2 .Button {
   gap: 10px;
   margin: 10px;
-}/*# sourceMappingURL=style2.css.map */
+}
+
+/*# sourceMappingURL=style2.css.map */

@@ -87,7 +87,7 @@
           <button class="btn btn-black bg-black" type="submit" id="btnRegister">Daftar</button>
         </div>
         <div class="text-center mt-1" id="Daftar-di-sini">
-          Sudah mempunyai akun? <router-link to="/">Login</router-link>
+          Sudah mempunyai akun? <router-link to="/login">Login</router-link>
         </div>
       </form>
     </div>

@@ -51,15 +51,16 @@ const login = async () => {
 
       <label class="text-dark " or="username">Username:</label>
       <input class="border border-black" type="text" id="username_user" v-model="username_user"
-        placeholder="eg. Jogn_Doe123">
+        placeholder="Cth: Charlize_Scavendish">
       <br>
       <label for="password">Password:</label>
-      <input class="border border-black" type="password" id="password_user" v-model="password_user">
-      <a class="RESET" href="#">
+      <input class="border border-black" type="password" id="password_user" v-model="password_user"
+      placeholder="Masukkan Password">
+      <a class="RESET" href="login">
         <p>Reset Password</p>
       </a>
       <div class="text-center mt-1" id="Daftar-di-sini">
-        Baru Pertama Mendaftar? <router-link to="/Home2">Daftar Disini</router-link>
+        Baru Pertama Mendaftar? <router-link to="/registUser">Daftar Disini</router-link>
       </div>
       <div class="d-flex align-items-center justify-content-center ">
         <button id="btnLogin" class="btn btn-dark m-auto text-center w-50 mt-1 justify-content-center" type="submit">

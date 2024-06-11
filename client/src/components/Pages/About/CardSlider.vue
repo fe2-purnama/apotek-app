@@ -35,7 +35,7 @@ export default {
 
 <template>
   <div id="CONTRIBUTORS">
-    <h3 class="fw-bold fs-2">Our Team</h3>
+    <h3 class="fw-bold fs-2">Tim Kami</h3>
   </div>
 
   <div id="slider-container">

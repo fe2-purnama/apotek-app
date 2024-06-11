@@ -1,6 +1,9 @@
 <template>
   <div class="dashboard">
     <NavMenu />
+    <br>
+    <br>
+    <br>
     <div class="content">
       <h1>Dashboard</h1>
       <div class="spacer"></div>

@@ -1,17 +1,22 @@
+:root {
+  margin: 0;
+}
+
 .footer-container {
-  max-width: 4000;
-  width: 1250px;
-  margin-left: -70px;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
-  padding: 20px;
+  justify-content: space-around;
+  /* Update this line */
+  padding: 20px 0;
   background-color: #f9f9f9;
   border-top: 1px solid #ddd;
+  box-sizing: border-box;
 }
 
 .footer-section {
   flex: 1;
-  margin: 0 20px;
+  margin: 0 10px 0 auto;
+  /* Update this line */
 }
 
 .footer-section h4 {
@@ -59,4 +64,9 @@
 .social-icons img {
   width: 24px;
   height: 24px;
-}/*# sourceMappingURL=style.css.map */
+}
+
+/* Add margin-top to create space between footer and above content */
+.footer-container {
+  margin-top: 150px;  /* Adjust as needed to create sufficient space */
+}

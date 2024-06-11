@@ -16,14 +16,66 @@
             </div>
 
             <div class="row mb-4">
+    <div class="col-md-3 ml-4 mt-4">
+        <h3 class="text-center">Produk Lainya</h3>
+        <img src="../assets/promo1.png" alt="" width="250">
+        <img src="../assets/promo2.png" alt="" width="250" class="mt-3">
+    </div>
 
-                <div class="col-md-3 ml-4 mt-4">
-                    <h3 class="text-center">Produk Lainya</h3>
-                    <img src="../assets/promo1.png" alt="" width="250">
-                    <img src="../assets/promo2.png" alt="" width="250" class="mt-3">
-                </div>
+    <div class="col-md-9">
+        <div class="container1">
+                    <div class="card">
+                        <img src="../assets/Card4.png" alt="Stimuno Imuno Syrup">
+                        <h2>Stimuno Imuno Syrup</h2>
+                        <p>Obat Vitamin Syrup Anak</p>
+                        <p>Rp 25.000</p>
+                    </div>
+                    <div class="card">
+                        <img src="../assets/Card3.png" alt="Vicks Inhaler KeyChain">
+                        <h2>Vicks Inhaler KeyChain</h2>
+                        <p>Obat Pilek Inhaler Vicks</p>
+                        <p>Rp 17.000</p>
+                    </div>
+                    <div class="card">
+                        <img src="../assets/Card1.png" alt="Antimo Anak Rasa Jeruk Sachet">
+                        <h2>Antimo Anak Rasa Jeruk Sachet</h2>
+                        <p>Obat Syrup untuk mabuk perjalanan</p>
+                        <p>Rp.2500</p>
+                    </div>
+                    <div class="card">
+                        <img src="../assets/Card5.jpg" alt="Bisolvon Bromhexine HCL">
+                        <h2>Bisolvon Bromhexine HCL</h2>
+                        <p>Obat Batuk Berdahak Dewasa</p>
+                        <p>Rp 57.000</p>
+                    </div>
+                    <div class="card">
+                        <img src="../assets/procold.jpg" alt="Procold Flu dan Batuk">
+                        <h2>Procold Flu dan Batuk</h2>
+                        <p>Obat sakit kepala, dan hidung tersumbat</p>
+                        <p>Rp 4.725</p>
+                    </div>
+                    <div class="card">
+                        <img src="../assets/Card6.png" alt="Comtusi Oxomemazine">
+                        <h2>Ibuprofen</h2>
+                        <p>Deskripsi Ibuprofen</p>
+                        <p>Rp 50.000</p>
+                    </div>
+        </div>
 
-            </div>
+        <div class="pagination">
+                <a href="#">&laquo;</a>
+                <a href="#" class="active">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">...</a>
+                <a href="#">10</a>
+                <a href="#">11</a>
+                <a href="#">12</a>
+                <a href="#">&raquo;</a>
+        </div>
+    </div>
+</div>
 
         </main>
 
