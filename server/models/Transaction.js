@@ -1,19 +1,18 @@
 const mongoose = require("mongoose");
 
 const transactionSchema = new mongoose.Schema({
-  id_detail_transaction: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: [true],
-    ref: "TransactionDetail",
+  transaction_code: {
+    type: String,
+    required: true,
+    unique: true,
   },
-  id_user: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: [true],
-    ref: "User",
+  transaction_date: {
+    type: Date,
+    required: true,
   },
-  total_price: {
+  total_bill: {
     type: Number,
-    required: [true],
+    required: true,
   },
 });
 
