@@ -14,6 +14,7 @@
                     <div class="navbar-nav ms-auto justify-content-center">
                         <a class="nav-link active" aria-current="page" href="#">Beranda</a>
                         <a class="nav-link" href="#tentangKami">Tentang Kami</a>
+                        <a class="nav-link" href="#location">Lokasi Kami</a>
                         <a class="nav-link" href="#keunggulanKami">Keunggulan</a>
                     </div>
                     <div class="Button">

@@ -1,22 +1,17 @@
-:root {
-  margin: 0;
-}
-
 .footer-container {
+  max-width: 100%;  /* Ensures the footer spans the full width of the container */
   width: 100%;
+  margin: 0 auto;  /* Centers the footer container */
   display: flex;
-  justify-content: space-around;
-  /* Update this line */
-  padding: 20px 0;
+  justify-content: space-between;
+  padding: 20px 50px;  /* Adds padding to the left and right */
   background-color: #f9f9f9;
   border-top: 1px solid #ddd;
-  box-sizing: border-box;
 }
 
 .footer-section {
   flex: 1;
-  margin: 0 10px 0 auto;
-  /* Update this line */
+  margin: 0 20px;
 }
 
 .footer-section h4 {
@@ -68,5 +63,5 @@
 
 /* Add margin-top to create space between footer and above content */
 .footer-container {
-  margin-top: 150px;  /* Adjust as needed to create sufficient space */
+  margin-top: 50px;  /* Adjust as needed to create sufficient space */
 }

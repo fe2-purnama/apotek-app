@@ -6,10 +6,23 @@
 }
 .navbar #formsearch #search {
   width: 350px;
+  height: fit-content;
+  margin-top: 20px;
 }
+
+.navbar #button {
+  width: fit-content;
+  height: fit-content;
+  margin-top: 20px;
+}
+
 .navbar #keranjang {
   text-align: start;
   justify-content: flex-start;
+}
+
+#HeroMenu {
+  padding-top: 80px;
 }
 
 #HeroMenu #Checkout img {

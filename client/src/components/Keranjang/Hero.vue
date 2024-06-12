@@ -35,7 +35,7 @@
 </template>
 
 <script >
-import NavMenu from './NavMenu.vue'; 
+import NavMenu from "@/components/NavMenu/NavMenu.vue"; 
 import Footer from '../Footer/Footer.vue';
 export default {
     components: {

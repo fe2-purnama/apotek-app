@@ -4,9 +4,8 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 <!-- Navbar brand for logo -->
-                <a class="navbar-brand" href="#">
-                    <img src="@/assets/logo.png" alt="Logo" width="55" height="auto"
-                        class="logo-apotek">
+                <a class="navbar-brand" href="/HomeLogin">
+                    <img src="@/assets/logo.png" alt="Logo" width="55" height="auto" class="logo-apotek">
                 </a>
 
                 <!-- Toggler/collapsible Button -->
@@ -27,7 +26,7 @@
                     <!-- Cart and user icons -->
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="/Hero">
                                 <i class="bi bi-cart4"></i>
                             </a>
                         </li>
@@ -36,8 +35,17 @@
                                 <i class="bi bi-file-earmark-diff"></i>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <button class="btn btn-outline-dark btn-sm">Halo, User</button>
+                        <!-- User dropdown -->
+                        <li class="nav-item dropdown">
+                            <button class="btn btn-outline-dark btn-sm dropdown-toggle" type="button" id="userDropdown"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Halo, User
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" href="/HomeLogin">Cari Obat</a></li>
+                                <li><a class="dropdown-item" href="/Dashboard">Dashboard</a></li>
+                                <li><a class="dropdown-item" href="/home2">Log Out</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </div>

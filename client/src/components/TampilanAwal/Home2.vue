@@ -8,8 +8,8 @@
             <div class="row mt-5 justify-content-center">
                 <div class="col-5" id="Collom1">
                     <h1>Apotek Medika Prima</h1>
-                    <p>Selamat datang di Apotek Sejahtera, tempat Anda mendapatkan solusi kesehatan terbaik dengan
-                        pelayanan prima. Apotek Sejahtera berdedikasi untuk memberikan layanan farmasi yang handal,
+                    <p>Selamat datang di Apotek Medika Prima, tempat Anda mendapatkan solusi kesehatan terbaik dengan
+                        pelayanan prima. Apotek Medika Prima berdedikasi untuk memberikan layanan farmasi yang handal,
                         aman, dan terpercaya bagi seluruh masyarakat. Kami menyediakan berbagai macam obat-obatan,
                         vitamin, suplemen, serta produk kesehatan lainnya yang berkualitas tinggi dan terjangkau.</p>
                     <button class="btn btn-dark" @click="showMoreInfo">Lihat Selengkapnya</button>
@@ -48,7 +48,7 @@
 
         <div class="container shadow px-5 pt-4" id="tentangKami">
             <br><br><br>
-            <h3 class="text-center mb-5">Kenapa Harus Kami</h3>
+            <h3 class="text-center mb-5">Kenapa Harus Kami?</h3>
             <div class="row">
                 <div class="col-lg-8">
                     <div class="row">
@@ -65,7 +65,7 @@
                     <div class="card p-3 shadow-sm animated-card">
                         <img src="@/assets/doctor.jpg" class="card-img-top animated-image" alt="Consulting Doctor">
                         <div>
-                            <p>Apotek Sejahtera tidak hanya menyediakan obat-obatan dan produk kesehatan, tetapi juga
+                            <p>Apotek Medika Prima tidak hanya menyediakan obat-obatan dan produk kesehatan, tetapi juga
                                 layanan konsultasi dokter yang terpercaya. Tim dokter kami yang berpengalaman siap
                                 memberikan saran medis yang tepat untuk memastikan Anda mendapatkan perawatan yang
                                 optimal. Konsultasi ini dapat membantu dalam diagnosis kondisi kesehatan Anda dan
@@ -78,6 +78,7 @@
         </div>
 
         <div class="container my-5 shadow px-5 pt-4" id="location">
+            <br><br><br><br>
             <h3 class="text-center mb-4">Lokasi Kami</h3>
             <div class="row justify-content-center">
                 <div class="col-12">
@@ -92,6 +93,7 @@
             <br><br>
         </div>
         <div class="container shadow px-5 pt-4 mt-5" id="keunggulanKami">
+            <br><br><br><br>
             <h3 class="text-center mb-5">Keunggulan Kami</h3>
             <div class="row">
                 <div class="col-lg-4 mb-4" v-for="(advantage, index) in advantages" :key="index">
@@ -125,7 +127,7 @@ export default {
         showMoreInfo() {
             Swal.fire({
                 title: 'Informasi Lengkap',
-                text: 'Apotek Sejahtera menyediakan berbagai macam obat-obatan, vitamin, suplemen, serta produk kesehatan lainnya yang berkualitas tinggi dan terjangkau. Lihat halaman produk kami untuk informasi lebih lanjut.',
+                text: 'Apotek Medika Prima menyediakan berbagai macam obat-obatan, vitamin, suplemen, serta produk kesehatan lainnya yang berkualitas tinggi dan terjangkau. Lihat halaman produk kami untuk informasi lebih lanjut.',
                 icon: 'info',
                 confirmButtonText: 'Tutup'
             });

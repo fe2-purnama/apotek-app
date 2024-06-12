@@ -7,7 +7,9 @@
         <nav class="navbar  navbar-expand-lg navbar-expand-md ">
             <div class="container-fluid">
                 <div class="d-flex">
-                    <a class="navbar-brand">Logo Apotek</a>
+                    <a class="navbar-brand">
+                        <img src="@/assets/logo.png" alt="Logo" width="55" height="auto" class="logo-apotek">
+                    </a>
                     <form class="d-flex" role="search" id="formsearch">
                         <input class="form-control me-2 w-200 " id="search" type="search" placeholder="Cari Obat-obatan"
                             aria-label="Search">
