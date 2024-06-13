@@ -5,6 +5,7 @@
     margin: 0 auto;
     padding: 20px;
     padding-top: 150px;
+
     h1 {
         text-align: center;
     }
@@ -95,22 +96,21 @@ a {
         <div id="container">
             <div class="row">
                 <div class="col1">
-                    <img src="@/assets/Card4.png" alt="">
+                    <img src="@/assets/Card5.jpg" alt="">
                 </div>
                 <div class="col2">
-                    <h2>Stimuno Imuno Syrup</h2>
-                    <p>Stimuno Imuno Syrup adalah suplemen herbal yang mengandung ekstrak meniran hijau, bermanfaat
-                        untuk meningkatkan sistem kekebalan tubuh pada anak-anak. </p>
+                    <h2>Bisolvon Bromhexine HCL</h2>
+                    <p>Bisolvon dengan kandungan aktif Bromhexine HCl adalah obat yang digunakan untuk meredakan batuk
+                        berdahak.</p>
                     <h2>Anjuran Pakai</h2>
                     <ol>
-                        <li>anak-anak diatas 1 tahun, 5ml 3x1</li>
-                        <li>Dewasa, 10ml 3x1</li>
+                        <li>untuk anak usia 2-5 tahun, dosisnya adalah 5 ml, 2 kali sehari</li>
+                        <li>untuk anak usia 6-10 tahun, dosisnya adalah 5 ml, 3 kali sehari</li>
+                        <li>untuk anak usia di atas 10 tahun, dosisnya adalah 10 ml, 3 kali sehari</li>
                     </ol>
                     <h2>efek samping</h2>
-                    <p> Efek samping yang mungkin terjadi termasuk sakit perut dan diare, dan penggunaan produk ini
-                        harus dihindari oleh wanita hamil atau individu dengan kondisi autoimun. Penting untuk
-                        berkonsultasi dengan dokter sebelum memberikan suplemen ini kepada anak atau jika terjadi reaksi
-                        alergi setelah konsumsi.</p>
+                    <p>Efek samping yang mungkin terjadi termasuk reaksi alergi, gangguan pencernaan, atau gejala lain
+                        yang tidak biasa, dan jika terjadi, sebaiknya konsultasi dengan dokter.</p>
                     <!-- quantity -->
                     <div class="calculator">
                         <div class="button" @click="changeValue(-1)">-</div>

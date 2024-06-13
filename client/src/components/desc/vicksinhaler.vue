@@ -4,7 +4,10 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-    padding-top: 50px
+    padding-top: 150px;
+    h1 {
+        text-align: center;
+    }
 }
 
 #productdetails h1,
@@ -95,17 +98,16 @@ a {
                     <img src="@/assets/Card3.png" alt="">
                 </div>
                 <div class="col2">
-                    <h2>Vicks Inhaler</h2>
-                    <p>Vicks Inhaler KeyChain</p>
-                    <h2>Anjuran Pakai</h2>
-                    <ol>
-                        <li>dosis pertama</li>
-                        <li>dosis kedua</li>
-                        <li>dosis ketiga</li>
-                        <li>dan seterusnya</li>
-                    </ol>
+                    <h2>Vicks Inhaler Vicks Inhaler KeyChain</h2>
+                    <p>Vicks Inhaler KeyChain adalah produk non-obat yang berguna untuk meredakan hidung tersumbat
+                        akibat pilek, mengandung menthol dan camphor yang memberikan sensasi dingin dan hangat.</p>
+                    <h2>Cara Pemakaian</h2>
+                    <p>
+                        Cara penggunaannya adalah dengan menghirup melalui satu lubang hidung sambil menutup lubang
+                        hidung yang lain secara bergantian.
+                    </p>
                     <h2>efek samping</h2>
-                    <p>Deskripsi efek samping</p>
+                    <p>penggunaan berlebihan dapat menyebabkan iritasi pada hidung. Penting untuk menyimpan produk ini jauh dari jangkauan anak-anak dan dalam suhu ruangan.</p>
                     <!-- quantity -->
                     <div class="calculator">
                         <div class="button" @click="changeValue(-1)">-</div>

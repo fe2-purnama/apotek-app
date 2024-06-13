@@ -5,6 +5,7 @@
     margin: 0 auto;
     padding: 20px;
     padding-top: 150px;
+
     h1 {
         text-align: center;
     }
@@ -95,22 +96,21 @@ a {
         <div id="container">
             <div class="row">
                 <div class="col1">
-                    <img src="@/assets/Card4.png" alt="">
+                    <img src="@/assets/Card6.png" alt="">
                 </div>
                 <div class="col2">
-                    <h2>Stimuno Imuno Syrup</h2>
-                    <p>Stimuno Imuno Syrup adalah suplemen herbal yang mengandung ekstrak meniran hijau, bermanfaat
-                        untuk meningkatkan sistem kekebalan tubuh pada anak-anak. </p>
+                    <h2>Ibuprofen</h2>
+                    <p>Ibuprofen adalah obat antiinflamasi nonsteroid yang digunakan untuk meredakan nyeri, mengurangi
+                        demam, dan mengatasi peradangan</p>
                     <h2>Anjuran Pakai</h2>
                     <ol>
-                        <li>anak-anak diatas 1 tahun, 5ml 3x1</li>
-                        <li>Dewasa, 10ml 3x1</li>
+                        <li>Baik dikonsumsi setiap 4-6 jam sesuai dengan dosis yang dianjurkan dan tidak melebihi dosis
+                            maksimum harian</li>
                     </ol>
                     <h2>efek samping</h2>
-                    <p> Efek samping yang mungkin terjadi termasuk sakit perut dan diare, dan penggunaan produk ini
-                        harus dihindari oleh wanita hamil atau individu dengan kondisi autoimun. Penting untuk
-                        berkonsultasi dengan dokter sebelum memberikan suplemen ini kepada anak atau jika terjadi reaksi
-                        alergi setelah konsumsi.</p>
+                    <p>Efek samping yang mungkin terjadi termasuk gangguan pencernaan seperti sakit perut, mual, dan
+                        diare. Penting untuk berkonsultasi dengan dokter sebelum menggunakan ibuprofen, terutama bagi
+                        mereka yang memiliki kondisi kesehatan tertentu atau sedang mengonsumsi obat lain.</p>
                     <!-- quantity -->
                     <div class="calculator">
                         <div class="button" @click="changeValue(-1)">-</div>

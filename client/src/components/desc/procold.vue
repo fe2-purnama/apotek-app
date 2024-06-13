@@ -5,6 +5,7 @@
     margin: 0 auto;
     padding: 20px;
     padding-top: 150px;
+
     h1 {
         text-align: center;
     }
@@ -95,22 +96,23 @@ a {
         <div id="container">
             <div class="row">
                 <div class="col1">
-                    <img src="@/assets/Card4.png" alt="">
+                    <img src="@/assets/procold.jpg" alt="">
                 </div>
                 <div class="col2">
-                    <h2>Stimuno Imuno Syrup</h2>
-                    <p>Stimuno Imuno Syrup adalah suplemen herbal yang mengandung ekstrak meniran hijau, bermanfaat
-                        untuk meningkatkan sistem kekebalan tubuh pada anak-anak. </p>
+                    <h2>Procold Flu dan Batuk</h2>
+                    <p>Procold Flu dan Batuk adalah obat yang mengandung Paracetamol, Dextromethorphan HBr, dan
+                        Phenylepherine HCl, digunakan untuk meredakan gejala flu seperti demam, sakit kepala, hidung
+                        tersumbat, dan batuk tidak berdahak</p>
                     <h2>Anjuran Pakai</h2>
                     <ol>
-                        <li>anak-anak diatas 1 tahun, 5ml 3x1</li>
-                        <li>Dewasa, 10ml 3x1</li>
+                        <li>dewasa dan anak di atas 12 tahun disarankan mengonsumsi 1 tablet tiga kali sehari</li>
+                        <li>anak 6-12 tahun sebaiknya mengonsumsi setengah tablet tiga kali sehari</li>
                     </ol>
-                    <h2>efek samping</h2>
-                    <p> Efek samping yang mungkin terjadi termasuk sakit perut dan diare, dan penggunaan produk ini
-                        harus dihindari oleh wanita hamil atau individu dengan kondisi autoimun. Penting untuk
-                        berkonsultasi dengan dokter sebelum memberikan suplemen ini kepada anak atau jika terjadi reaksi
-                        alergi setelah konsumsi.</p>
+                    <h2>Efek Samping</h2>
+                    <p>Efek samping yang mungkin terjadi termasuk gangguan pencernaan, gangguan psikomotor, takikardi,
+                        aritmia, palpitasi, retensi urin, mengantuk, mulut kering, dan pada penggunaan dosis besar atau
+                        jangka panjang dapat menyebabkan kerusakan hati. Penting untuk berkonsultasi dengan dokter
+                        sebelum menggunakan obat ini, terutama bagi penderita dengan kondisi kesehatan tertentu.</p>
                     <!-- quantity -->
                     <div class="calculator">
                         <div class="button" @click="changeValue(-1)">-</div>
@@ -156,4 +158,4 @@ export default {
         }
     }
 };
-</script>
+</script> 

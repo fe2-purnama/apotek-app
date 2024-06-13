@@ -2,7 +2,7 @@
   padding-top: 110px;
 }
 
-.cardSlider .img-wrapper {
+.cardSlider.img-wrapper {
   max-width: 100%;
   height: 17vw;
 }
@@ -11,44 +11,40 @@
   max-height: 100%;
 }
 @media screen and (min-width: 576px) {
-  .cardSlider .carousel-inner {
+ .cardSlider.carousel-inner {
     display: flex;
   }
-  .cardSlider .carosel-item {
+ .cardSlider.carosel-item {
     display: block;
     margin-right: 0;
     flex: 0 0 33.3333333333%;
   }
-  .cardSlider .img-wrapper {
+ .cardSlider.img-wrapper {
     height: 23vw;
   }
 }
-.cardSlider .carousel-inner {
+.cardSlider.carousel-inner {
   padding: 1em;
 }
-.cardSlider .card {
+.cardSlider.card {
   margin: 0.5em;
-}/*# sourceMappingURL=style.css.map */
+}
 
 .container1 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  img {
-    width: 150px;
-  }
 }
-
 .card {
   margin: 10px;
   border: 1px solid #ddd;
   padding: 10px;
   width: 200px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  a {
-    text-decoration: none;
-    color: black;
-  }
+}
+a {
+  text-decoration: none;
+  color: black;
 }
 
 img {
@@ -81,13 +77,13 @@ img {
   float: left;
   padding: 8px 16px;
   text-decoration: none;
-  transition: background-color .3s;
+  transition: background-color.3s;
   border: 1px solid #ddd;
   margin: 0 4px;
 }
 
 .pagination a.active {
-  background-color: #4CAF50;
+  background-color: #7c7c7c;
   color: white;
 }
 
@@ -109,5 +105,3 @@ img {
   flex: 0 0 75%;
   max-width: 75%;
 }
-
-/* Pastikan untuk menyesuaikan ukuran flex-basis dan max-width sesuai dengan kebutuhan layout Anda */

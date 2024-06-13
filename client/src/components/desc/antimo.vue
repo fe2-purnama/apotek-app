@@ -4,7 +4,11 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-    padding-top: 50px
+    padding-top: 150px;
+
+    h1 {
+        text-align: center;
+    }
 }
 
 #productdetails h1,
@@ -98,13 +102,10 @@ a {
                         mual, muntah, dan pusing.</p>
                     <h2>Anjuran Pakai</h2>
                     <ol>
-                        <li>dosis pertama</li>
-                        <li>dosis kedua</li>
-                        <li>dosis ketiga</li>
-                        <li>dan seterusnya</li>
+                        <li>1 - 2 kemasan untuk anak-anak usia 2 - 6 tahun</li>
+                        <li>2 kemasan untuk anak-anak usia 6 - 12 tahun</li>
+                        <li><strong>DIMINUM SETELAH MAKAN</strong></li>
                     </ol>
-                    <h2>efek samping</h2>
-                    <p>Deskripsi efek samping</p>
                     <!-- quantity -->
                     <div class="calculator">
                         <div class="button" @click="changeValue(-1)">-</div>
