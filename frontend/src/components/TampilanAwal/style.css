@@ -1,0 +1,119 @@
+#HeroMenu {
+  padding-top: 95px;
+  margin-left: 15px;
+}
+#HeroMenu #Collom1 h1 {
+  font-family: "Baloo 2";
+  font-weight: 700;
+}
+#HeroMenu #Collom1 p {
+  font-family: "Poppins";
+  font-weight: 300;
+  font-size: 18px;
+}
+#HeroMenu #Collom1 #icon {
+  margin-left: -10px;
+}
+#HeroMenu #Collom1 .icon-btn {
+  margin: 10px;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 24px;
+  padding: 0;
+}
+#HeroMenu #Collom1 .icon-btn i {
+  font-size: 24px;
+}
+#HeroMenu img {
+  width: 450px;
+  margin-top: -30px;
+  justify-content: center;
+  text-align: center;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+#tentangKami {
+  border-radius: 10px;
+  margin-top: -50px;
+}
+#tentangKami h3 {
+  font-family: "Baloo 2";
+  font-weight: 700;
+}
+#tentangKami .card {
+  border-radius: 15px;
+}
+#tentangKami .card p {
+  font-family: "Poppins";
+  font-weight: 300;
+}
+#tentangKami .card img {
+  border-radius: 15px 15px 0 0;
+  width: 100%;
+  height: 100%;
+}/*# sourceMappingURL=style.css.map */
+.feature-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+.animated-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.animated-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.animated-image {
+  transition: transform 0.3s ease-in-out;
+}
+
+.animated-card:hover .animated-image {
+  transform: scale(1.05);
+}
+.my-5 {
+  margin-top: 3rem !important;
+  margin-bottom: 3rem !important;
+}
+
+.mb-4 {
+  margin-bottom: 1.5rem !important;
+}
+
+.mt-5 {
+  margin-top: 3rem !important;
+}
+
+.embed-responsive {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  padding-top: 56.25%; /* 16:9 aspect ratio */
+}
+
+.embed-responsive .embed-responsive-item {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
