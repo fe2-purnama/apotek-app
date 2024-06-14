@@ -8,7 +8,7 @@ var dotenv = require("dotenv");
 var app = express();
 var port = 3000;
 
-var authRouter = require("../server/router/authRouter");
+var authRouter = require("./router/authRouter");
 const productRouter = require("./router/productRouter");
 const cartRouter = require("./router/cartRouter");
 const transactionRouter = require("./router/transactionRouter");
