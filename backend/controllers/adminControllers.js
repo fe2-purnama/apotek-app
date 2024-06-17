@@ -91,8 +91,110 @@ const logoutAdmin = (req, res) => {
     res.status(200).json({ success: true, message: 'Logout berhasil' });
 };
 
-const getAdmin = (req, res) => {
-    res.status(200).json({ success: true, message: 'Berhasil mendapatkan data admin' });
+const getAllUsers = async (req, res) => {
+    try {
+        const users = await User.find();
+        res.status(200).json({ success: true, data: users });
+    } catch (error) {
+        res.status(500).json({ success: false, message: 'Error getting users', error: error.message });
+    }
 };
 
-module.exports = { registerAdmin, loginAdmin, logoutAdmin, getAdmin, updateAdminProfile };
+const getUserById = async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id);
+        if (!user) {
+            return res.status(404).json({ success: false, message: 'User not found' });
+        }
+        res.status(200).json({ success: true, data: user });
+    } catch (error) {
+        res.status(500).json({ success: false, message: 'Error getting user', error: error.message });
+    }
+};
+
+const editUser = async (req, res) => {
+    try {
+        const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
+        if (!updatedUser) {
+            return res.status(404).json({ success: false, message: 'User not found' });
+        }
+        res.status(200).json({ success: true, data: updatedUser });
+    } catch (error) {
+        res.status(500).json({ success: false, message: 'Error updating user', error: error.message });
+    }
+};
+
+const deleteUser = async (req, res) => {
+    try {
+        const deletedUser = await User.findByIdAndDelete(req.params.id);
+        if (!deletedUser) {
+            return res.status(404).json({ success: false, message: 'User not found' });
+        }
+        res.status(200).json({ success: true, message: 'User deleted successfully' });
+    } catch (error) {
+        res.status(500).json({ success: false, message: 'Error deleting user', error: error.message });
+    }
+};
+
+const getAllAdmins = async (req, res) => {
+    try {
+        let admins;
+        if (req.user.role === 'superadmin') {
+            admins = await Admin.find().select('+password_admin');
+        } else {
+            admins = await Admin.find().select('-password_admin');
+        }
+        res.status(200).json({ success: true, data: admins });
+    } catch (error) {
+        res.status(500).json({ success: false, message: 'Error getting admins', error: error.message });
+    }
+};
+
+const getAdminById = async (req, res) => {
+    try {
+        let admin;
+        if (req.user.role === 'superadmin') {
+            admin = await Admin.findById(req.params.id).select('+password_admin');
+        } else {
+            admin = await Admin.findById(req.params.id).select('-password_admin');
+        }
+        if (!admin) {
+            return res.status(404).json({ success: false, message: 'Admin not found' });
+        }
+        res.status(200).json({ success: true, data: admin });
+    } catch (error) {
+        res.status(500).json({ success: false, message: 'Error getting admin', error: error.message });
+    }
+};
+
+const editAdmin = async (req, res) => {
+    try {
+        if (req.user.role !== 'superadmin') {
+            return res.status(403).json({ success: false, message: 'Only superadmin can edit admin' });
+        }
+        const updatedAdmin = await Admin.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
+        if (!updatedAdmin) {
+            return res.status(404).json({ success: false, message: 'Admin not found' });
+        }
+        res.status(200).json({ success: true, data: updatedAdmin });
+    } catch (error) {
+        res.status(500).json({ success: false, message: 'Error updating admin', error: error.message });
+    }
+};
+
+const deleteAdmin = async (req, res) => {
+    try {
+        if (req.user.role !== 'superadmin') {
+            return res.status(403).json({ success: false, message: 'Only superadmin can delete admin' });
+        }
+        const deletedAdmin = await Admin.findByIdAndDelete(req.params.id);
+        if (!deletedAdmin) {
+            return res.status(404).json({ success: false, message: 'Admin not found' });
+        }
+        res.status(200).json({ success: true, message: 'Admin deleted successfully' });
+    } catch (error) {
+        res.status(500).json({ success: false, message: 'Error deleting admin', error: error.message });
+    }
+};
+
+module.exports = { registerAdmin, loginAdmin, logoutAdmin, updateAdminProfile, getAllUsers, getUserById, editUser, deleteUser , getAllAdmins, getAdminById, editAdmin, deleteAdmin };
