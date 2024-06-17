@@ -6,7 +6,7 @@ var mongoose = require("mongoose");
 var path = require("path");
 var dotenv = require("dotenv");
 var app = express();
-var port = 3000;
+var port = 	6009;
 
 var authRouter = require("./router/authRouter");
 const productRouter = require("./router/productRouter");
