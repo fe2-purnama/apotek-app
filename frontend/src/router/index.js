@@ -11,6 +11,8 @@ import AddProduct from "../components/contohCrudForm/addProduct.vue";
 import ListProduct from "../components/contohCrudForm/listProduct.vue";
 import EditProduct from "../components/contohCrudForm/editProduct.vue";
 import HomeLogin from "../components/HomeLogin.vue";
+//desc global
+import Global from "../components/desc/descglobal.vue";
 // deskripsi obat taro disini
 import antimo from "../components/desc/antimo.vue";
 import vicksinhaler from "../components/desc/vicksinhaler.vue";
@@ -33,6 +35,8 @@ const routes = [
   { path: '/editProduct/:id', name: 'EditProduct', component: EditProduct },
   { path: '/dashboard', name: 'dashboard', component: Dashboard },
   { path: '/', name: 'home2', component: Home2 },
+  //DESC GLOBAL (USING API GET AND AXIOS)
+  { path: '/descglobal', name: 'Global', component: Global },
   // deskripsi obat taro disini
   { path: '/desc_antimo', name: 'antimo', component: antimo},
   { path: '/desc_vicksinhaler', name:'vicksinhaler', component: vicksinhaler},
