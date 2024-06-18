@@ -1,0 +1,249 @@
+dokumentasi API :
+
+---- USER -----
+
+1  login user :
+
+link : http://localhost:6009/api/auth/login
+method : POST
+field wajib : username_user, password_user
+catatan : authToken akan muncul automatis sesuai dengan authToken saat registrasi
+
+2 regist user :
+link : http://localhost:6009/api/auth/register
+method : POST
+field wajib : username_user, password_user, email_user, name_user, dob_user, phone_user
+catatan : proses register akan mengirimkan authToken berupa JWT
+
+3 logout user :
+link : http://localhost:6009/api/auth/logout
+method : GET
+field wajib : tidak ada
+
+4 update user (profile) :
+link : http://localhost:6009/api/auth/update-profile
+method : PUT
+authorization (header) : Bearer (isinya sama dengan authToken)
+field wajib : auto mengirim data terbaru yang diinput di halaman profile
+
+---- ADMIN -----
+
+5 login admin :
+link : http://localhost:6009/api/admin/loginAdmin
+method : POST
+field wajib : username_admin, password_admin
+
+6 regist admin : 
+link : http://localhost:6009/api/admin/registerAdmin
+method : POST
+field wajib : username_admin, password_admin, email_admin, name_admin, dob_admin, phone_admin, role (auto tersisi default 'admin')
+
+7 logout admin : 
+link : http://localhost:6009/api/admin/logoutAdmin
+method : GET
+field wajib : tidak ada
+
+8 update admin (profile) :
+link : http://localhost:6009/api/admin/update-profile
+method : PUT
+authorization (header) : Bearer (isinya sama dengan authToken)
+field wajib : auto mengirim data terbaru yang diinput di halaman profile
+
+---- PRODUK -----
+bisa untuk CRUD produk di sisi admin dan bisa unutk tampil, search, detail produk di sisi user
+
+9 tampil semua produk (all) :
+link : http://localhost:6009/api/product/product
+method : GET
+authorization (header) : tidak perlu
+field wajib : _id, name_product, price_product, category_product, description_product, composition_product, dose_product, sideeffects_product, group_product,manufacture_product, stock_product, expiry_date_product, image_product
+
+10 tampil produk berdasarkan id (bisa untuk detail produk)
+link : http://localhost:6009/api/product/product/:id
+contoh : http://localhost:6009/api/product/product/665d8f9fb57b5b298048d5e6
+method : GET
+authorization (header) : tidak perlu
+field wajib : _id, name_product, price_product, category_product, description_product, composition_product, dose_product, sideeffects_product, group_product,manufacture_product, stock_product, expiry_date_product, image_product
+
+11 search produk (search produk berdasarkan nama, kategori, deskripsi, dan komposisi)
+link :http://localhost:6009/api/product/product/
+contoh : http://localhost:6009/api/product/product/?search=obat neozep
+method : GET
+authorization (header) : tidak perlu
+field wajib : query params , key 'search'
+
+12 add produk :
+link : http://localhost:6009/api/product/product
+method : POST
+authorization (header) : tidak perlu
+field wajib : _id, name_product, price_product, category_product, description_product, composition_product, dose_product, sideeffects_product, group_product,manufacture_product, stock_product, expiry_date_product, image_product
+
+13 delete produk :
+link : http://localhost:6009/api/product/product/:id
+contoh : http://localhost:6009/api/product/product/665d8f9fb57b5b298048d5e6
+method : DELETE
+authorization (header) : tidak perlu
+field wajib : _id
+
+14 update produk (profile) :
+link : http://localhost:6009/api/product/product/:id
+contoh : http://localhost:6009/api/product/product/665d8f9fb57b5b298048d5e6
+method : PUT
+authorization (header) : tidak perlu
+field wajib : mengupdate data sesuai form yang diinput 
+
+
+---- CART -----
+
+15 add produk to cart :  
+link : http://localhost:6009/api/cart/add-cart-item
+method : POST
+contoh input data :
+{
+    "id_product": "665d9caa5077c21797ee4e7b",
+    "quantity": 10
+} 
+authorization (header) : Bearer (isinya sama dengan authToken)
+field wajib : id_produk (_id), quantity
+
+16 lihat cart : 
+link : http://localhost:6009/api/cart/cart-items
+method : GET
+contoh data yang terkirim jika sukses masuk ke collection cart : 
+[
+    {
+        "name_product": "Obh Combi Plus Batuk Flu Menthol Sirup 100ml",
+        "price_product": 60090,
+        "group_product": "Obat Bebas Terbatas",
+        "quantity": 10,
+        "total_price": 600900
+    }
+]
+contoh data di database :
+{
+  "_id": {
+    "$oid": "666d829957345ccd063ecfad"
+  },
+  "id_product": {
+    "$oid": "665d9caa5077c21797ee4e7b"
+  },
+  "id_user": {
+    "$oid": "666d7a4d57345ccd063ecf9b"
+  },
+  "transaction_code": null,
+  "quantity": 10,
+  "status": false,
+  "__v": 0
+}
+authorization (header) : Bearer (isinya sama dengan authToken)
+field wajib : name_product, price_product, group_product, quantity, total_price
+
+17 edit data di cart :
+link : http://localhost:6009/api/cart/edit-cart-item
+contoh penerapan : 
+{
+    "cartItemId" : "666d829957345ccd063ecfad",
+    "quantityChange" : 2,
+    "operation" : "decrease"
+}
+
+contoh hasil setelah penerapan :
+[
+    {
+        "name_product": "Obh Combi Plus Batuk Flu Menthol Sirup 100ml",
+        "price_product": 60090,
+        "group_product": "Obat Bebas Terbatas",
+        "quantity": 8, (berkurang)
+        "total_price": 240000
+    }
+]
+authorization (header) : Bearer (isinya sama dengan authToken)
+field wajib : cartItemId (_id), quantityChange, operation (increase atau decrease)
+
+---- transaction -----
+
+18. proses dari cart ke checkout 
+link : http://localhost:6009/api/transaction/checkout
+contoh penerapan :
+{
+    "cartItemIds" : ["666d829957345ccd063ecfad"]
+}
+
+contoh hasil penerapan / return : 
+{
+    "message": "Checkout successful",
+    "transaction_code": "AMP202406151914001",
+    "total_bill": 240000
+}
+
+authorization (header) : Bearer (isinya sama dengan authToken)
+field wajib : cartItemId (_id)
+
+update endpoint tambahan Admin :
+
+---- CRUD DATA ADMIN DAN USER DI SISI ADMIN -----
+
+19. tampil semua data user :
+link : http://localhost:6009/api/admin/dataUsers/
+method : GET
+authorization (header) : Bearer (isinya sama dengan authToken)
+field wajib : tidak ada
+catatan : menampilkan semua data user filenya : _id, username_user, password_user, email_user, name_user, dob_user, phone_user
+
+20. tampil data user by id :
+link : http://localhost:6009/api/admin/dataUsers/:id
+method : GET
+contoh : http://localhost:6009/api/admin/dataUsers/666d7a4d57345ccd063ecf9b
+authorization (header) : Bearer (isinya sama dengan authToken)
+field wajib : mengirim _id (user) untuk ditampilkan
+
+21. edit data user by id :
+link : http://localhost:6009/api/admin/dataUsers/:id
+method : PUT
+contoh : http://localhost:6009/api/admin/dataUsers/666d7a4d57345ccd063ecf9b
+authorization (header) : Bearer (isinya sama dengan authToken)
+field wajib : hanya field yang diupdate maka terupdate
+
+22. delete data user by id :
+link : http://localhost:6009/api/admin/dataUsers/:id
+method : PUT
+contoh : http://localhost:6009/api/admin/dataUsers/666d7a4d57345ccd063ecf9b
+authorization (header) : Bearer (isinya sama dengan authToken)
+field wajib : mengirim _id (user) untuk ditampilkan
+
+23. tampil semua data admin :
+link : http://localhost:6009/api/admin/dataAdmins/
+method : GET
+authorization (header) : Bearer (isinya sama dengan authToken)
+field wajib : tidak ada
+catatan : 
+- menampilkan semua data user filenya : username_admin, password_admin, email_admin, name_admin, dob_admin, phone_admin, role
+- password_admin hanya ditampilkan jika role admin == 'superadmin'
+
+24. tampil data admin by id :
+link : http://localhost:6009/api/admin/dataAdmins/:id
+method : GET
+authorization (header) : Bearer (isinya sama dengan authToken)
+field wajib : tidak ada
+contoh : http://localhost:6009/api/admin/dataAdmins/6670232136e34a67c2493086
+catatan : 
+- menampilkan semua data user filenya : username_admin, password_admin, email_admin, name_admin, dob_admin, phone_admin, role
+- password_admin hanya ditampilkan jika role admin == 'superadmin'
+
+25. edit data admin by id :
+link : http://localhost:6009/api/admin/dataAdmins/:id
+method : PUT
+authorization (header) : Bearer (isinya sama dengan authToken)
+field wajib : tidak ada
+contoh : http://localhost:6009/api/admin/dataAdmins/6670232136e34a67c2493086
+catatan : 
+- edit admin hanya bisa dilakukan oleh admin yang memiliki role admin yang sedang login adalah == 'superadmin'
+
+27. delete data admin by id :
+link : http://localhost:6009/api/admin/dataAdmins/:id
+method : DELETE
+authorization (header) : Bearer (isinya sama dengan authToken)
+field wajib : tidak ada
+contoh : http://localhost:6009/api/admin/dataAdmins/6670232136e34a67c2493086
+catatan : 
+- delete admin hanya bisa dilakukan oleh admin yang memiliki role admin yang sedang login adalah == 'superadmin'

@@ -18,10 +18,24 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <!-- Search form -->
                     <form class="d-flex ms-auto" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Cari Obat-obatan"
-                            aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
+                        <input class="form-control me-2" type="search" v-model="searchQuery"
+                            placeholder="Cari Obat-obatan" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit"
+                            @click.prevent="searchProducts">Search</button>
                     </form>
+
+                    <!-- Search results dropdown -->
+                    <div class="dropdown ms-auto">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button"
+                            id="searchResultsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            Hasil Pencarian
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="searchResultsDropdown">
+                            <li v-for="result in searchResults" :key="result.id">
+                                <a class="dropdown-item" href="#">{{ result.name }}</a>
+                            </li>
+                        </ul>
+                    </div>
 
                     <!-- Cart and user icons -->
                     <ul class="navbar-nav ms-auto">
@@ -55,7 +69,26 @@
 </template>
 
 <script>
-// Your script here
+import axios from 'axios';
+
+export default {
+    data() {
+        return {
+            searchQuery: '',
+            searchResults: [],
+        };
+    },
+    methods: {
+        async searchProducts() {
+            try {
+                const response = await axios.get(`http://localhost:6009/api/product/product/?search=${this.searchQuery}`);
+                this.searchResults = response.data.data;
+            } catch (error) {
+                console.error(error);
+            }
+        },
+    },
+};
 </script>
 
 <style scoped>
