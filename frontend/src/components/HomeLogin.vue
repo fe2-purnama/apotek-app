@@ -26,14 +26,14 @@
 
         <div class="col-md-9">
           <div class="container1">
-            <div v-for="product in products" :key="product._id" class="card">
-              <a :href="'/desc_' + product.name_product.toLowerCase().replace(/\s+/g, '-')">
-                <img :src="product.image_product" :alt="product.name_product" />
-                <h2>{{ product.name_product }}</h2>
-                <p>Rp {{ product.price_product }}</p>
-              </a>
+              <div v-for="product in products" :key="product._id" class="card">
+                <a :href="'/descglobal/' + product._id">
+                  <img :src="product.image_product" :alt="product.name_product" />
+                  <h2>{{ product.name_product }}</h2>
+                  <p>Rp {{ product.price_product }}</p>
+                </a>
+              </div>
             </div>
-          </div>
 
           <div class="pagination">
             <a href="#">&laquo;</a>

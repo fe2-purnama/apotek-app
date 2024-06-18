@@ -89,38 +89,37 @@ a {
         <NavMenu />
     </nav>
 
-    <div id="productdetails">
-        <h1>PRODUCT DETAILS</h1>
-        <div id="container">
-            <div class="row">
-                <div class="col1">
-                    <img src="@/assets/Card1.png" alt="">
-                </div>
-                <div class="col2">
-                    <h2>Antimo Anak Rasa Jeruk Sachet</h2>
-                    <p>Antimo adalah obat yang digunakan untuk mencegah dan meredakan gejala mabuk perjalanan seperti
-                        mual, muntah, dan pusing.</p>
-                    <h2>Anjuran Pakai</h2>
-                    <ol>
-                        <li>1 - 2 kemasan untuk anak-anak usia 2 - 6 tahun</li>
-                        <li>2 kemasan untuk anak-anak usia 6 - 12 tahun</li>
-                        <li><strong>DIMINUM SETELAH MAKAN</strong></li>
-                    </ol>
-                    <!-- quantity -->
-                    <div class="calculator">
-                        <div class="button" @click="changeValue(-1)">-</div>
-                        <div id="number">{{ quantity }}</div>
-                        <div class="button" @click="changeValue(1)">+</div>
-                    </div>
-                    <!-- quantity end-->
-                    <!-- checkout -->
-                    <a href="/Hero">
-                        <button class="checkout">tambah ke keranjang</button>
-                    </a>
-                </div>
-            </div>
+<div id="productdetails">
+    <h1>PRODUCT DETAILS</h1>
+    <div id="container">
+      <div class="row">
+        <div class="col1">
+          <img :src="product.image_product" alt="">
         </div>
+        <div class="col2">
+          <h2>{{ product.name_product }}</h2>
+          <p>{{ product.description }}</p>
+          <h2>Anjuran Pakai</h2>
+          <ol>
+            <li>{{ product.dose }}</li>
+          </ol>
+          <h2>Side Effect</h2>
+          <p>{{ product.side_effect }}</p>
+          <!-- quantity -->
+          <div class="calculator">
+            <div class="button" @click="changeValue(-1)">-</div>
+            <div id="number">{{ quantity }}</div>
+            <div class="button" @click="changeValue(1)">+</div>
+          </div>
+          <!-- quantity end-->
+          <!-- checkout -->
+          <a href="/Hero">
+            <button class="checkout">tambah ke keranjang</button>
+          </a>
+        </div>
+      </div>
     </div>
+  </div>
 
     <footer>
         <Footer />
@@ -133,22 +132,38 @@ import NavMenu from "@/components/NavMenu/NavMenu.vue";
 import Footer from '../Footer/Footer.vue';
 
 export default {
-    components: {
-        NavMenu,
-        Footer
-    },
-    setup() {
-        const quantity = ref(1);
-
-        function changeValue(change) {
-            quantity.value += change;
-            if (quantity.value < 1) quantity.value = 1; // Prevents quantity from going below 1
-        }
-
-        return {
-            quantity,
-            changeValue
-        }
+  components: {
+    NavMenu,
+    Footer
+  },
+  props: {
+    id: {
+      type: String,
+      required: true
     }
+  },
+  setup(props) {
+    const quantity = ref(1);
+    const product = ref({});
+
+    axios.get(`http://localhost:6009/api/product/${props.id}`)
+     .then(response => {
+        product.value = response.data.data;
+      })
+     .catch(error => {
+        console.error(error);
+      });
+
+    function changeValue(change) {
+      quantity.value += change;
+      if (quantity.value < 1) quantity.value = 1; // Prevents quantity from going below 1
+    }
+
+    return {
+      product,
+      quantity,
+      changeValue
+    }
+  }
 };
 </script>
