@@ -11,9 +11,9 @@
         <div class="card-body">
           <h5 class="card-title">Informasi Pengguna</h5>
           <div class="user-info">
-            <p><strong>Nama Lengkap:</strong> Budi Hartanto</p>
-            <p><strong>Jenis Kelamin:</strong> Pria</p>
-            <p><strong>No Handphone:</strong> 0821 2637 1923</p>
+            <p><strong>Nama Lengkap:</strong> {{ userInfo.name }}</p>
+            <p><strong>Jenis Kelamin:</strong> {{ userInfo.gender }}</p>
+            <p><strong>No Handphone:</strong> {{ userInfo.phone }}</p>
           </div>
         </div>
       </div>
@@ -23,22 +23,20 @@
           <h5 class="card-title">Update Biodata</h5>
           <form class="edit-form" @submit.prevent="handleSubmit">
             <div class="form-group" :class="{ 'has-error': nameError }">
-              <input class="form-control mb-2" type="text" placeholder="Edit Nama" v-model="name" />
+              <input class="form-control mb-2" type="text" placeholder="Edit Nama" v-model="name" @input="resetError('name')" />
               <div v-if="nameError" class="error"><i class="fa fa-exclamation-circle"></i> Nama tidak boleh kosong</div>
             </div>
             <div class="form-group" :class="{ 'has-error': genderError }">
-              <select class="form-control mb-2" v-model="gender">
+              <select class="form-control mb-2" v-model="gender" @change="resetError('gender')">
                 <option value="" disabled selected>Pilih Jenis Kelamin</option>
                 <option value="Pria">Pria</option>
                 <option value="Wanita">Wanita</option>
               </select>
-              <div v-if="genderError" class="error"><i class="fa fa-exclamation-circle"></i> Jenis Kelamin tidak boleh
-                kosong</div>
+              <div v-if="genderError" class="error"><i class="fa fa-exclamation-circle"></i> Jenis Kelamin tidak boleh kosong</div>
             </div>
             <div class="form-group" :class="{ 'has-error': phoneError }">
-              <input class="form-control mb-2" type="tel" placeholder="Edit No Handphone" v-model="phone" />
-              <div v-if="phoneError" class="error"><i class="fa fa-exclamation-circle"></i> No Handphone tidak boleh
-                kosong</div>
+              <input class="form-control mb-2" type="tel" placeholder="Edit No Handphone" v-model="phone" @input="resetError('phone')" />
+              <div v-if="phoneError" class="error"><i class="fa fa-exclamation-circle"></i> No Handphone tidak boleh kosong</div>
             </div>
             <button class="btn btn-dark" type="submit">Submit</button>
           </form>
@@ -52,28 +50,90 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
+import axios from 'axios';
 import NavMenu from '../NavMenu/NavMenu.vue';
 
+// Define user information
+const userInfo = ref({
+  name: '',
+  gender: '',
+  phone: ''
+});
+
+// Initialize form fields with user information
 const name = ref('');
 const gender = ref('');
 const phone = ref('');
+
 const alertVisible = ref(false);
 const nameError = ref(false);
 const genderError = ref(false);
 const phoneError = ref(false);
 
-const handleSubmit = () => {
+const fetchUserInfo = async () => {
+  try {
+    const response = await axios.get('http://localhost:6009/api/auth/user-info');
+    if (response.data.success) {
+      const user = response.data.data;
+      userInfo.value.name = user.name;
+      userInfo.value.gender = user.gender;
+      userInfo.value.phone = user.phone;
+      // Initialize form fields with fetched user information
+      name.value = user.name;
+      gender.value = user.gender;
+      phone.value = user.phone;
+    } else {
+      console.error('Failed to fetch user information:', response.data.message);
+    }
+  } catch (error) {
+    console.error('Error fetching user information:', error);
+  }
+};
+
+onMounted(() => {
+  fetchUserInfo();
+});
+
+const handleSubmit = async () => {
   nameError.value = !name.value;
   genderError.value = !gender.value;
   phoneError.value = !phone.value;
 
   if (!nameError.value && !genderError.value && !phoneError.value) {
-    alertVisible.value = true;
-    setTimeout(() => {
-      alertVisible.value = false;
-    }, 3000);
-    console.log('Submitted:', { name: name.value, gender: gender.value, phone: phone.value });
+    try {
+      const response = await axios.post('http://localhost:6009/api/auth/update-profile', {
+        name: name.value,
+        gender: gender.value,
+        phone: phone.value
+      });
+
+      if (response.data.success) {
+        userInfo.value.name = name.value;
+        userInfo.value.gender = gender.value;
+        userInfo.value.phone = phone.value;
+
+        alertVisible.value = true;
+        setTimeout(() => {
+          alertVisible.value = false;
+        }, 3000);
+        console.log('Submitted:', { name: name.value, gender: gender.value, phone: phone.value });
+      } else {
+        console.error('Update failed:', response.data.message);
+      }
+    } catch (error) {
+      console.error('Update error:', error);
+    }
+  }
+};
+
+const resetError = (field) => {
+  if (field === 'name') {
+    nameError.value = !name.value;
+  } else if (field === 'gender') {
+    genderError.value = !gender.value;
+  } else if (field === 'phone') {
+    phoneError.value = !phone.value;
   }
 };
 </script>

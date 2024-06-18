@@ -164,7 +164,7 @@ const register = async () => {
   }
 
   try {
-    const response = await axios.post('http://localhost:3000/api/auth/register', {
+    const response = await axios.post('http://localhost:6009/api/auth/register', {
       name_user: name_user.value,
       username_user: username_user.value,
       email_user: email_user.value,
