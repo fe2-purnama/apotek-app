@@ -1,6 +1,8 @@
 <template>
   <div class="dashboard">
-    <NavMenu />
+    <nav>
+      <NavMenu />
+    </nav>
     <br>
     <br>
     <br>
@@ -9,50 +11,69 @@
       <div class="spacer"></div>
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Informasi Pengguna</h5>
+          <h5 class="card-title">Informasi Pengguna:</h5>
           <div class="user-info">
-            <p><strong>Nama Lengkap:</strong> {{ updatedUser.name_user }}</p>
-            <p><strong>Jenis Kelamin:</strong> {{ updatedUser.gender_user }}</p>
-            <p><strong>Nomor Telp.:</strong> {{ updatedUser.phone_user }}</p>
-            <p><strong>Email :</strong> {{ updatedUser.email_user }}</p>
+            <div class="row mb-2">
+              <div class="col-sm-4"><strong>Nama Lengkap</strong></div>
+              <div class="col-sm-8">: {{ userData.name_user }}</div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-sm-4"><strong>Email </strong></div>
+              <div class="col-sm-8">: {{ userData.email_user }}</div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-sm-4"><strong>Tanggal Lahir</strong></div>
+              <div class="col-sm-8">: {{ userData.dob_user }}</div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-sm-4"><strong>Nomor Handphone</strong></div>
+              <div class="col-sm-8">: {{ userData.phone_user }}</div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-sm-4"><strong>Alamat</strong></div>
+              <div class="col-sm-8">: {{ userData.address_user }}</div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-sm-4"><strong>Jenis Kelamin</strong></div>
+              <div class="col-sm-8">: {{ userData.gender_user }}</div>
+            </div>
           </div>
         </div>
       </div>
       <br><br><br>
       <div class="card mt-3">
         <div class="card-body">
-          <h5 class="card-title">Update Biodata</h5>
+          <h5 class="card-title">Update Biodata :</h5>
           <form @submit.prevent="updateProfile">
-            <div>
-              <label for="name">Nama Lengkap:</label>
-              <input type="text" id="name" v-model="updatedUser.name_user" required>
+            <div class="mb-3">
+              <label for="name" class="form-label">Nama Lengkap :</label>
+              <input type="text" id="name" v-model="updatedUser.name_user" class="form-control">
             </div>
-            <div>
-              <label for="email">Email:</label>
-              <input type="email" id="email" v-model="updatedUser.email_user" required>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email :</label>
+              <input type="email" id="email" v-model="updatedUser.email_user" class="form-control">
             </div>
-            <div>
-              <label for="dob">Tanggal Lahir:</label>
-              <input type="date" id="dob" v-model="updatedUser.dob_user" required>
+            <div class="mb-3">
+              <label for="dob" class="form-label">Tanggal Lahir :</label>
+              <input type="date" id="dob" v-model="updatedUser.dob_user" class="form-control">
             </div>
-            <div>
-              <label for="phone">No Handphone:</label>
-              <input type="text" id="phone" v-model="updatedUser.phone_user" required>
+            <div class="mb-3">
+              <label for="phone" class="form-label">No Handphone :</label>
+              <input type="text" id="phone" v-model="updatedUser.phone_user" class="form-control">
             </div>
-            <div>
-              <label for="address">Alamat :</label>
-              <textarea id="adress" v-model="updatedUser.address_user" required></textarea>
+            <div class="mb-3">
+              <label for="address" class="form-label">Alamat :</label>
+              <textarea id="address" v-model="updatedUser.address_user" class="form-control"></textarea>
             </div>
-            <div>
-              <label for="gender">Gender:</label>
-              <select id="gender" v-model="updatedUser.gender_user" required>
-                <option value="">Pilih Gender</option>
+            <div class="mb-3">
+              <label for="gender" class="form-label">Gender :</label>
+              <select id="gender" v-model="updatedUser.gender_user" class="form-select">
+                <option value="">Pilih Gender :</option>
                 <option value="Pria">Pria</option>
                 <option value="Wanita">Wanita</option>
               </select>
             </div>
-            
-            <button type="submit">Update</button>
+            <button type="submit" class="btn btn-primary">Update</button>
           </form>
         </div>
       </div>
@@ -66,10 +87,20 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
+import NavMenu from '../NavMenu/NavMenu.vue';
+import Footer from '../Footer/Footer.vue'; 
 import { useRouter } from 'vue-router';
+import Swal from 'sweetalert2';
 
-const userData = ref({}); // Inisialisasi userData
-const updatedUser = ref({});
+const userData = ref({});
+const updatedUser = ref({
+  name_user: '',
+  email_user: '',
+  dob_user: '',
+  phone_user: '',
+  address_user: '',
+  gender_user: ''
+});
 const router = useRouter();
 
 // Ambil data pengguna dari local storage saat komponen di-mount
@@ -77,11 +108,6 @@ onMounted(() => {
   const storedUserData = localStorage.getItem('userData');
   if (storedUserData) {
     userData.value = JSON.parse(storedUserData);
-    updatedUser.value = { ...userData.value }; // Inisialisasi updatedUser dengan data pengguna saat ini
-    // Set nilai default untuk input tanggal lahir jika data pengguna memiliki nilai null atau undefined
-    if (!updatedUser.value.dob_user) {
-      updatedUser.value.dob_user = new Date().toISOString().split('T')[0];
-    }
   }
 });
 
@@ -103,15 +129,25 @@ const logout = async () => {
 };
 
 const updateProfile = async () => {
-  try {
-    const authToken = localStorage.getItem('authToken');;
-    if (!authToken) {
-    console.error('Auth token not found.');
+  if (!updatedUser.value.name_user || !updatedUser.value.email_user || !updatedUser.value.dob_user || !updatedUser.value.phone_user || !updatedUser.value.address_user || !updatedUser.value.gender_user) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Maaf...',
+      text: 'Semua Kolom Wajib Diisi!',
+    });
     return;
-    } // Ambil token otentikasi dari local storage
+  }
+
+  try {
+    const authToken = localStorage.getItem('authToken');
+    if (!authToken) {
+      console.error('Auth token not found.');
+      return;
+    }
+
     const response = await axios.put('http://localhost:6009/api/auth/update-profile', updatedUser.value, {
       headers: {
-        Authorization: `Bearer ${authToken}` // Sertakan token otentikasi dalam header Authorization
+        Authorization: `Bearer ${authToken}`
       }
     });
 
@@ -119,7 +155,21 @@ const updateProfile = async () => {
       // Update data pengguna yang disimpan di local storage
       localStorage.setItem('userData', JSON.stringify(updatedUser.value));
       // Tampilkan pesan sukses
-      console.log('Profile updated successfully');
+      userData.value = { ...updatedUser.value };
+      Swal.fire({
+        icon: 'success',
+        title: 'Berhasil',
+        text: 'Biodata Telah Berhasil Diubah!',
+      });
+      // Reset updatedUser fields
+      updatedUser.value = {
+        name_user: '',
+        email_user: '',
+        dob_user: '',
+        phone_user: '',
+        address_user: '',
+        gender_user: ''
+      };
     } else {
       console.error('Profile update failed');
     }
@@ -167,82 +217,22 @@ const updateProfile = async () => {
   font-weight: bold;
 }
 
-.user-info {
-  margin-bottom: 20px;
-}
-
-.user-info p {
-  margin: 5px 0;
-}
-
-.edit-form {
-  display: flex;
-  flex-direction: column;
-}
-
-.edit-form .form-group {
-  position: relative;
-}
-
-.edit-form .form-control {
-  margin-bottom: 10px;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #495057;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid #ced4da;
-  border-radius: 0.25rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-.edit-form .form-group.has-error .form-control {
-  border-color: #dc3545;
-  background-color: #f8d7da;
-  padding-right: 2.25rem;
-}
-
-.edit-form .error {
-  color: #dc3545;
-  font-size: 0.875rem;
-  position: absolute;
-  top: 50%;
-  right: 0.75rem;
-  transform: translateY(-50%);
-  display: flex;
-  align-items: center;
-}
-
-.edit-form .error i {
-  margin-right: 5px;
-}
-
-.edit-form .btn {
-  align-self: flex-start;
-}
-
-.alert {
-  width: 100%;
-  max-width: 600px;
-  padding: 15px;
-  border-radius: 5px;
+.user-info .row {
   margin-bottom: 10px;
 }
 
-.alert-success {
-  background-color: #d4edda;
-  color: #155724;
-  border: 1px solid #c3e6cb;
+.user-info .row .col-sm-4 {
+  font-weight: bold;
 }
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
+.btn-primary {
+  background-color: #96db5b;
+  border-color: #96db5b;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
+.btn-primary:hover {
+  background-color: #008036;
+  border-color: #008036;
 }
 </style>

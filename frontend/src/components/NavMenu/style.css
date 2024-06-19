@@ -2,65 +2,85 @@
   margin: 0;
 }
 
- /* Ensure the navbar fills the entire top of the screen */
- #navmenu .navbar {
-   width: 100%;
-   /* Full width */
-   position: fixed;
-   /* Fixed at the top */
-   top: 0;
-   /* Align to the top */
-   left: 0;
-   /* Align to the left */
-   z-index: 1000;
-   /* Ensure it stays on top of other content */
- }
+/* Ensure the navbar fills the entire top of the screen */
+#navmenu .navbar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
 
- /* Style the navbar brand (logo) */
- .navbar-brand {
-   font-weight: bold;
-   /* Make the logo text bold */
-   font-size: 1.5rem;
-   /* Increase the size of the logo text */
- }
+/* Style the navbar brand (logo) */
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
 
- /* Style the search input */
- #formsearch .form-control {
-   padding: 0.375rem 0.75rem;
-   /* Adjust padding */
-   font-size: 1rem;
-   /* Adjust font size */
- }
+/* Style the search input */
+#formsearch .form-control {
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+}
 
- /* Style the search button */
- #formsearch .btn {
-   padding: 0.375rem 0.75rem;
-   /* Adjust padding */
- }
+/* Style the search button */
+#formsearch .btn {
+  padding: 0.375rem 0.75rem;
+}
 
- /* Style the cart and file icons */
- .bi-cart4,
- .bi-file-earmark-diff {
-   width: 1.5em;
-   /* Adjust icon size */
-   height: 1.5em;
-   /* Adjust icon size */
- }
+/* Style the cart and file icons */
+.bi-cart4,
+.bi-file-earmark-diff {
+  width: 1.5em;
+  height: 1.5em;
+}
 
- /* Style the user greeting button */
- #keranjang .btn {
-   padding: 0.25rem 0.5rem;
-   /* Adjust padding */
-   font-size: 0.875rem;
-   /* Adjust font size */
- }
+/* Style the user greeting button */
+#keranjang .btn {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+}
 
- /* Responsive adjustments */
- @media (max-width: 991px) {
+#nav-items .nav-item {
+  margin-right: 1rem;
+}
 
-   /* Adjustments for smaller screens */
-   .navbar-toggler {
-     margin-right: 0.5rem;
-     /* Adjust margin for the toggle button */
-   }
- }/*# sourceMappingURL=style.css.map */
+#nav-items .nav-item:last-child {
+  margin-right: 0;
+}
+
+/* Dropdown menu hover effect */
+.dropdown-menu {
+  transition: all 0.3s ease;
+}
+
+.dropdown-menu .dropdown-item {
+  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: white;
+  color: rgb(0, 0, 0);
+}
+
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu .dropdown-item:focus,
+.dropdown-menu .dropdown-item.active {
+  background-color: #008036;
+  color: white;
+}
+
+/* Dropdown toggle button hover effect */
+#userDropdown {
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#userDropdown:hover {
+  background-color: #96db5b;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+  .navbar-toggler {
+    margin-right: 0.5rem;
+  }
+}

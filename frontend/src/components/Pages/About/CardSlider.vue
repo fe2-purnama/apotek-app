@@ -1,14 +1,21 @@
 <script>
+import Card1 from '@/assets/yeriko.png';
+import Card2 from '@/assets/ari.png';
+import Card3 from '@/assets/ibnu.png';
+import Card4 from '@/assets/amir.png';
+import Card5 from '@/assets/Card5.jpg';
+import Card6 from '@/assets/ginda.png';
+
 export default {
   data() {
     return {
       boxes: [
-        { key: 1, word: 'Yeriko' },
-        { key: 2, word: 'Ari' },
-        { key: 3, word: 'Ibnu' },
-        { key: 4, word: 'Amir' },
-        { key: 5, word: 'Rizqy' },
-        { key: 6, word: 'Ginda' },
+        { key: 1, word: 'Yeriko', image: Card1 },
+        { key: 2, word: 'Ari', image: Card2 },
+        { key: 3, word: 'Ibnu', image: Card3 },
+        { key: 4, word: 'Amir', image: Card4 },
+        { key: 5, word: 'Rizqy', image: Card5 },
+        { key: 6, word: 'Ginda', image: Card6 },
       ],
       currentIndex: 0
     };
@@ -33,6 +40,7 @@ export default {
 };
 </script>
 
+
 <template>
   <div id="CONTRIBUTORS">
     <h3 class="fw-bold fs-2">Tim Kami</h3>
@@ -44,7 +52,9 @@ export default {
       <!-- Left arrow symbol -->
       <transition-group name="slide" tag="div" id="photos">
         <div class="box" v-for="(item, index) in displayedBoxes" :key="item.key">
-          <div :class="'box' + (index + 1)"></div>
+          <div :class="'box' + (index + 1)">
+            <img :src="item.image" :alt="item.word" class="box-image" />
+          </div>
           <p>{{ item.word }}</p>
         </div>
       </transition-group>
@@ -53,6 +63,8 @@ export default {
     </div>
   </div>
 </template>
+
+
 
 <style>
 #CONTRIBUTORS {
@@ -134,6 +146,13 @@ p {
   text-align: center;
   margin: 10px;
   transition: all 0.5s ease;
+}
+
+.box-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  object-fit: cover;
 }
 
 /* Vue transition styles */
