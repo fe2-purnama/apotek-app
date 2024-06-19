@@ -13,6 +13,8 @@ import EditProduct from "../components/contohCrudForm/editProduct.vue";
 import HomeLogin from "../components/HomeLogin.vue";
 //desc global
 import Global from "../components/desc/descglobal.vue";
+//hero global for checkout
+import HeroGlobal from "../components/hero/heroGlobal.vue";
 // deskripsi obat taro disini
 import antimo from "../components/desc/antimo.vue";
 import vicksinhaler from "../components/desc/vicksinhaler.vue";
@@ -37,6 +39,8 @@ const routes = [
   { path: '/', name: 'home2', component: Home2 },
 //DESC GLOBAL (USING API GET AND AXIOS)
 { path: '/descglobal/:id*', name: 'Global', component: Global, props: true },
+//hero global for checkout
+{ path: '/heroglobal/:id*', name: 'HeroGlobal', component: HeroGlobal, props: true},
   // deskripsi obat taro disini
   { path: '/desc_antimo', name: 'antimo', component: antimo},
   { path: '/desc_vicksinhaler', name:'vicksinhaler', component: vicksinhaler},

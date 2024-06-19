@@ -39,8 +39,8 @@
                   </div>
                   <!-- quantity end-->
                   <!-- checkout -->
-                  <a href="/Hero">
-                      <button class="checkout">tambah ke keranjang</button>
+                  <a href="/heroGlobal">
+                    <button class="checkout" @click="goToCheckout"> Tambah ke Keranjang </button>
                   </a>
               </div>
           </div>
@@ -84,6 +84,18 @@ export default {
             totalPrice // Make sure to return this
         }
     },
+methods: {
+  goToCheckout() {
+    this.$router.push({
+      name: 'HeroGlobal',
+      query: {
+        price: this.product.price_product,
+        quantity: this.quantity,
+        // Add any other product details you need on the checkout page
+      }
+    });
+  }
+},
     mounted() {
         const productId = this.$route.params.id;
         axios.get(`http://localhost:6009/api/product/product/${productId}`)
