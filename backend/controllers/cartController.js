@@ -151,7 +151,7 @@ const editCartItemQuantity = async (req, res) => {
       }
       cartItem.quantity -= quantityChange;
       if (cartItem.quantity === 0) {
-        await cartItem.remove();
+        await Cart.deleteOne({ _id: cartItemId });
         return res.status(200).send("Cart item has been removed");
       }
     } else {

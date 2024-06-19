@@ -27,7 +27,7 @@
                   <!-- Cart and user icons -->
                   <ul class="navbar-nav ms-auto" id="nav-items">
                       <li class="nav-item">
-                          <a class="nav-link" href="/Hero">
+                          <a class="nav-link" href="/cart">
                               <i class="bi bi-cart4"></i>
                           </a>
                       </li>

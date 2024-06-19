@@ -13,7 +13,7 @@ import EditProduct from "../components/contohCrudForm/editProduct.vue";
 import HomeLogin from "../components/HomeLogin.vue";
 //desc global
 import Global from "../components/desc/descglobal.vue";
-//hero global for checkout
+//cart global
 import cart from "../components/cart/cart.vue";
 
 const routes = [
@@ -30,10 +30,10 @@ const routes = [
   { path: '/editProduct/:id', name: 'EditProduct', component: EditProduct },
   { path: '/dashboard', name: 'dashboard', component: Dashboard },
   { path: '/', name: 'home2', component: Home2 },
-//DESC GLOBAL (USING API GET AND AXIOS)
-{ path: '/descglobal/:id*', name: 'Global', component: Global, props: true },
-//hero global for checkout
-{ path: '/cart/:id*', name: 'cart', component: cart, props: true},
+  //DESC GLOBAL (USING API GET AND AXIOS)
+  { path: '/descglobal/:id*', name: 'Global', component: Global, props: true },
+  //hero global for checkout
+  { path: '/cart', name: 'cart', component: cart, props: true },
 ];
 
 const router = createRouter({
