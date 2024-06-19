@@ -60,7 +60,7 @@ onMounted(() => {
 // Fungsi untuk logout
 const logout = async () => {
   try {
-    const response = await axios.get('http://localhost:3000/api/auth/logout');
+    const response = await axios.get('http://localhost:6009/api/auth/logout');
 
     if (response.data.success) {
       localStorage.removeItem('authToken');
@@ -81,7 +81,7 @@ const updateProfile = async () => {
     console.error('Auth token not found.');
     return;
     } // Ambil token otentikasi dari local storage
-    const response = await axios.put('http://localhost:3000/api/auth/update-profile', updatedUser.value, {
+    const response = await axios.put('http://localhost:6009/api/auth/update-profile', updatedUser.value, {
       headers: {
         Authorization: `Bearer ${authToken}` // Sertakan token otentikasi dalam header Authorization
       }
