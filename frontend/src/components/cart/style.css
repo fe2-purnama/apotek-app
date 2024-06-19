@@ -1,0 +1,106 @@
+/* Global Styles */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  background-color: #f9f9f9;
+}
+
+.container .row {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation */
+
+nav {
+  background-color: #333;
+  padding: 10px;
+  text-align: center;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+nav a:hover {
+  color: #ccc;
+}
+
+/* Hero Menu */
+
+#HeroMenu {
+  padding: 20px;
+}
+
+#HeroMenu h2 {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Checkout Section */
+
+#Checkout {
+  padding: 20px;
+}
+
+#Checkout input[type="text"] {
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+}
+
+#TotalBayar {
+  padding: 20px;
+  background-color: #f7f7f7;
+  border: 1px solid #ddd;
+}
+
+#TotalBayar h1 {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+#TotalBayar p {
+  margin-bottom: 10px;
+}
+
+#TotalBayar select {
+  width: 100%;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Utilities */
+
+.border-black {
+  border: 1px solid #333;
+}
+
+.shadow {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mt-5 {
+  padding-top: 70px;
+  margin-top: 40px;
+}

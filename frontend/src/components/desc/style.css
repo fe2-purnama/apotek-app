@@ -36,6 +36,8 @@
     width: 300px;
     height: auto;
     display: block;
+    border: #cecece solid;
+    border-radius: 10px;
 }
 
 .calculator {

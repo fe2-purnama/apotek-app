@@ -39,7 +39,7 @@
                   </div>
                   <!-- quantity end-->
                   <!-- checkout -->
-                  <a href="/heroGlobal">
+                  <a href="/cart">
                     <button class="checkout" @click="goToCheckout"> Tambah ke Keranjang </button>
                   </a>
               </div>
@@ -87,7 +87,7 @@ export default {
 methods: {
   goToCheckout() {
     this.$router.push({
-      name: 'HeroGlobal',
+      name: 'cart',
       query: {
         price: this.product.price_product,
         quantity: this.quantity,

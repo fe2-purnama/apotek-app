@@ -14,14 +14,7 @@ import HomeLogin from "../components/HomeLogin.vue";
 //desc global
 import Global from "../components/desc/descglobal.vue";
 //hero global for checkout
-import HeroGlobal from "../components/hero/heroGlobal.vue";
-// deskripsi obat taro disini
-import antimo from "../components/desc/antimo.vue";
-import vicksinhaler from "../components/desc/vicksinhaler.vue";
-import stimuno from '../components/desc/stimuno.vue'
-import bisolvon from '../components/desc/bisolvon.vue'
-import procold from '../components/desc/procold.vue'
-import ibuprofen from '../components/desc/ibuprofen.vue'
+import cart from "../components/cart/cart.vue";
 
 const routes = [
   { path: '/login', name: 'login', component: LoginUser },
@@ -40,14 +33,7 @@ const routes = [
 //DESC GLOBAL (USING API GET AND AXIOS)
 { path: '/descglobal/:id*', name: 'Global', component: Global, props: true },
 //hero global for checkout
-{ path: '/heroglobal/:id*', name: 'HeroGlobal', component: HeroGlobal, props: true},
-  // deskripsi obat taro disini
-  { path: '/desc_antimo', name: 'antimo', component: antimo},
-  { path: '/desc_vicksinhaler', name:'vicksinhaler', component: vicksinhaler},
-  { path: '/desc_stimuno', name: 'stimuno', component: stimuno},
-  { path: '/desc_bisolvon', name: 'bisolvon', component: bisolvon},
-  { path: '/desc_procold', name: 'procold', component: procold},
-  { path: '/desc_ibuprofen', name: 'ibuprofen', component: ibuprofen}
+{ path: '/cart/:id*', name: 'cart', component: cart, props: true},
 ];
 
 const router = createRouter({

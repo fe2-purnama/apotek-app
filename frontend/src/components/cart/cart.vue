@@ -12,6 +12,7 @@
         <div class="row">
             <div class="col-6" id="Checkout">
                 <input type="text" placeholder="inputkan lokasi pengiriman" class="form-control border-black">
+                
             </div>
             <div class="col-6 shadow p-4 border-black" id="TotalBayar">
                 <div id="checkout">
@@ -21,6 +22,15 @@
                     <p>Tax (0.1%): Rp {{ tax.toFixed(2) }}</p>
                     <p>Total Price: Rp {{ totalPrice.toFixed(2) }}</p>
                 </div>
+
+                <select>
+                  <option value="null">pilih metode pembayaran</option>
+                  <option value="qris">Bayar dengan QRIS</option>
+                  <option value="transfer">Transfer Bank</option>
+                  <option value="indomaret">Bayar di Indomaret</option>
+                  <option value="alfamart">Bayar di Alfamart</option>
+                </select>
+
             </div>
         </div>
 
