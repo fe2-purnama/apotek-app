@@ -53,7 +53,7 @@
                         <li class="nav-item dropdown">
                             <button class="btn btn-outline-dark btn-sm dropdown-toggle" type="button" id="userDropdown"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                Halo, User
+                                Halo, {{ userName }}
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="userDropdown">
                                 <li><a class="dropdown-item" href="/HomeLogin">Cari Obat</a></li>
@@ -76,6 +76,7 @@ export default {
         return {
             searchQuery: '',
             searchResults: [],
+            userName: ''
         };
     },
     methods: {
@@ -87,7 +88,19 @@ export default {
                 console.error(error);
             }
         },
+        // tambahkan ini sampai ---
+        getUserData() {
+            const userData = localStorage.getItem('userData');
+            if (userData) {
+                const parsedData = JSON.parse(userData);
+                this.userName = parsedData.name_user || 'User';
+            }
+        }
+        // sampai sini ----
     },
+    mounted() {
+        this.getUserData();
+    }
 };
 </script>
 
