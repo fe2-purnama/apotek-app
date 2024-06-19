@@ -35,6 +35,9 @@ const userSchema = new mongoose.Schema({
     },
     gender_user: {
         type: String
+    },
+    address_user: {
+        type: String
     }
 })
 

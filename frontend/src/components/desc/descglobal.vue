@@ -13,7 +13,7 @@
           <div class="row">
               <div class="col1">
                   <!-- Use dynamic image if available, otherwise fallback to static image -->
-                  <img :src="`http://localhost:6009${product.image_product}`" :alt="product.name_product">
+                  <img :src="`http://localhost:6009/public/img/product/${product.image_product}`" :alt="product.name_product">
               </div>
               <div class="col2">
                   <!-- Use dynamic product name if available -->

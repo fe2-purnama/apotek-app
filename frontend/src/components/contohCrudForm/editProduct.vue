@@ -83,7 +83,7 @@ export default {
   async created() {
       try {
           const productId = this.$route.params.id;
-          const response = await axios.get(`http://localhost:6009/api/product/${productId}`);
+          const response = await axios.get(`http://localhost:6009/api/product/product/${productId}`);
           this.form = response.data.data;
       } catch (error) {
           console.error('Terjadi kesalahan:', error.response.data);
@@ -97,7 +97,7 @@ export default {
           this.form.image_product = await this.uploadImage(this.newImage);
         }
         const productId = this.form._id;
-        const response = await axios.put(`http://localhost:6009/api/product/${productId}`, this.form);
+        const response = await axios.put(`http://localhost:6009/api/product/product/${productId}`, this.form);
         console.log('Produk berhasil diedit:', response.data);
         this.$router.push('/list-product');
       } catch (error) {

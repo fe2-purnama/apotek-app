@@ -46,7 +46,7 @@ export default {
   },
   async created() {
     try {
-      const response = await axios.get('http://localhost:6009/api/product');
+      const response = await axios.get('http://localhost:6009/api/product/product');
       this.productList = response.data.data;
     } catch (error) {
       console.error('Terjadi kesalahan:', error.response.data);
@@ -55,7 +55,7 @@ export default {
   methods: {
     async deleteProduct(productId) {
       try {
-        await axios.delete(`http://localhost:6009/api/product/${productId}`);
+        await axios.delete(`http://localhost:6009/api/product/product${productId}`);
         console.log('Produk berhasil dihapus');
         this.productList = this.productList.filter(product => product._id !== productId);
       } catch (error) {

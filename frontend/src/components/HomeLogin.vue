@@ -28,7 +28,7 @@
           <div class="container1">
             <div v-for="product in products" :key="product._id" class="card">
               <a :href="'/descglobal/' + product._id">
-                <img :src="product.image_product" :alt="product.name_product" />
+                <img :src="'http://localhost:6009/public/img/product/' + product.image_product" alt="Gambar Produk" width="150">
                 <h2>{{ product.name_product }}</h2>
                 <p>Rp {{ product.price_product }}</p>
               </a>

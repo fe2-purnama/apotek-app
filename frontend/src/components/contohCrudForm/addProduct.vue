@@ -97,7 +97,7 @@ export default {
     formData.append('group_product', this.form.group_product);
 
       try {
-        const response = await axios.post('http://localhost:6009/api/product', formData, {
+        const response = await axios.post('http://localhost:6009/api/product/product', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
