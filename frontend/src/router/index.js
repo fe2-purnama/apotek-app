@@ -36,7 +36,7 @@ const routes = [
   { path: '/dashboard', name: 'dashboard', component: Dashboard },
   { path: '/', name: 'home2', component: Home2 },
 //DESC GLOBAL (USING API GET AND AXIOS)
-{ path: '/descglobal/:id', name: 'Global', component: Global, props: true },
+{ path: '/descglobal/:id*', name: 'Global', component: Global, props: true },
   // deskripsi obat taro disini
   { path: '/desc_antimo', name: 'antimo', component: antimo},
   { path: '/desc_vicksinhaler', name:'vicksinhaler', component: vicksinhaler},

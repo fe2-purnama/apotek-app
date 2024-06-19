@@ -11,7 +11,7 @@
         <h2 class="mt-4">Rekomendasi Obat</h2>
       </div>
 
-      <div>
+      <div id="carousel">
         <CardCarosel />
       </div>
 
@@ -26,14 +26,14 @@
 
         <div class="col-md-9">
           <div class="container1">
-              <div v-for="product in products" :key="product._id" class="card">
-                <a :href="'/descglobal/' + product._id">
-                  <img :src="product.image_product" :alt="product.name_product" />
-                  <h2>{{ product.name_product }}</h2>
-                  <p>Rp {{ product.price_product }}</p>
-                </a>
-              </div>
+            <div v-for="product in products" :key="product._id" class="card">
+              <a :href="'/descglobal/' + product._id">
+                <img :src="product.image_product" :alt="product.name_product" />
+                <h2>{{ product.name_product }}</h2>
+                <p>Rp {{ product.price_product }}</p>
+              </a>
             </div>
+          </div>
 
           <div class="pagination">
             <a href="#">&laquo;</a>
@@ -98,5 +98,13 @@ nav {
   position: sticky;
   top: 0;
   z-index: 1000;
+}
+
+#carousel {
+  margin-top: -120px;
+}
+
+.container1, .row {
+  padding-top: 45px;
 }
 </style>

@@ -1,0 +1,69 @@
+{
+    "success": true,
+    "data": [
+        {
+            "_id": "665d8f9fb57b5b298048d5e6",
+            "name_product": "Neozep F Tablet",
+            "price_product": 3000,
+            "category_product": "Sistem Pernapasan Edit",
+            "description_product": "Neozep Forte merupakan obat untuk meringankan gejala flu seperti demam, sakit kepala, hidung tersumbat dan bersin-bersin.",
+            "composition_product": "fenilpropanolamin hcl 15 mg, ctm 2mg, paracetamol 250mg, salisilamida 150 mg",
+            "dose_product": "dewasa : 3-4 kali sehari 1 tablet. anak-6-12 thn : 3-4 kali sehari 1/2 tablet",
+            "sideeffects_product": "mengantuk, gangguan pencernaan , takikardia, aritmia, mulut kering , retensi urin, iritasi lambung, penggunaan dengan dosis besar dan jangka panjang menyebapkan kerusakan hati.",
+            "group_product": "Obat Bebas Terbatas",
+            "manufacture_product": "PT. Darya Varia Laboratories",
+            "stock_product": 298,
+            "expiry_date_product": "2024-06-30",
+            "image_product": "202406031717408327199-neozep baru.jpeg",
+            "__v": 0
+        },
+        {
+            "_id": "665d9910cf65ece066c9a642",
+            "name_product": "Floxifar 500mg Tablet",
+            "price_product": 10000,
+            "category_product": "Anti Infeksi",
+            "description_product": "Floxifar merupakan obat antibiotika yang digunakan untuk mengatasi infeksi pada saluran pernafasan atas, infeksi saluran kemih, saluran cerna, kulit dan jaringan lunak.",
+            "composition_product": "Setiap kaplet salut selaput mengandung Ciprofloxacin HCl setara dengan Ciprofloxacin 500 mg",
+            "dose_product": "infeksi saluran kencing ringan-sedang 2x250mg perhari; infeksi berat 2x500mg perhari; prostat kronis 2x 500 mg; akut gonorrhea250 mg dosis tunggal; infeksi saluran pencernaan 2x500 mg perhari",
+            "sideeffects_product": "mual muntah, diare, dispesia, nyeri abdominal, flatulence, anoreksia, pusing, sakit kepala, kelelahan, insomnia, tremor, gatal.",
+            "group_product": "Obat Keras",
+            "manufacture_product": "Ifars",
+            "stock_product": 197,
+            "expiry_date_product": "2024-06-30",
+            "image_product": "202406031717410064665-floxifar.jpeg",
+            "__v": 0
+        },
+        {
+            "_id": "665d9caa5077c21797ee4e7b",
+            "name_product": "Obh Combi Plus Batuk Flu Menthol Sirup 100ml",
+            "price_product": 30000,
+            "category_product": "Sistem Pernapasan",
+            "description_product": "OBH Combi Dewasa merupakan obat untuk mengatasi gejala flu seperti pilek, hidung tersumbat, demam, sakit kepala, bersin disertai oleh batuk.",
+            "composition_product": "succus Liquiritiae Extract 167 mg, Paracetamol 150 mg, Ammonium Chloride 50 mg, Ephedrine HCl 2,5 mg, Chlorpheniramine Maleate 1 mg, Alkohol 2%",
+            "dose_product": "> 12 tahun : sehari, 3 x 3 sendok takar (@ 5 ml"),
+            "sideeffects_product": "mengantuk",
+            "group_product": "Obat Bebas Terbatas",
+            "manufacture_product": "COMBIPHAR",
+            "stock_product": 292,
+            "expiry_date_product": "2024-06-14",
+            "image_product": "202406031717410986896-combi.jpg",
+            "__v": 0
+        }
+    ]
+}
+
+export default {
+  data() {
+    return {
+      product: {}
+    };
+  },
+  mounted() {
+    const productId = this.$route.params.id;
+    axios.get(`http://localhost:6009/api/product/product/${productId}`)
+      .then(response => {
+        this.product = response.data.data;
+      })
+      .catch(error => console.error('Error:', error));
+  }
+};

@@ -24,18 +24,6 @@
                             @click.prevent="searchProducts">Search</button>
                     </form>
 
-                    <!-- Search results dropdown -->
-                    <div class="dropdown ms-auto">
-                        <button class="btn btn-outline-secondary dropdown-toggle" type="button"
-                            id="searchResultsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                            Hasil Pencarian
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="searchResultsDropdown">
-                            <li v-for="result in searchResults" :key="result.id">
-                                <a class="dropdown-item" href="#">{{ result.name }}</a>
-                            </li>
-                        </ul>
-                    </div>
 
                     <!-- Cart and user icons -->
                     <ul class="navbar-nav ms-auto">
@@ -72,35 +60,39 @@
 import axios from 'axios';
 
 export default {
-    data() {
-        return {
-            searchQuery: '',
-            searchResults: [],
-            userName: ''
-        };
-    },
-    methods: {
-        async searchProducts() {
-            try {
-                const response = await axios.get(`http://localhost:6009/api/product/product/?search=${this.searchQuery}`);
-                this.searchResults = response.data.data;
-            } catch (error) {
-                console.error(error);
-            }
-        },
-        // tambahkan ini sampai ---
-        getUserData() {
-            const userData = localStorage.getItem('userData');
-            if (userData) {
-                const parsedData = JSON.parse(userData);
-                this.userName = parsedData.name_user || 'User';
-            }
+  data() {
+    return {
+      searchQuery: '',
+      searchResults: [],
+      userName: ''
+    };
+  },
+  methods: {
+    async searchProducts() {
+      try {
+        const response = await axios.get(`http://localhost:6009/api/product/product/?search=${this.searchQuery}`);
+        const products = response.data.data;
+        if (products.length > 0) {
+          const productId = products[0]._id; // Assuming you want to redirect to the first matching product
+          this.$router.push({ name: 'Global', params: { id: productId } });
+        } else {
+          console.log('No products found');
         }
-        // sampai sini ----
+      } catch (error) {
+        console.error(error);
+      }
     },
-    mounted() {
-        this.getUserData();
+    getUserData() {
+      const userData = localStorage.getItem('userData');
+      if (userData) {
+        const parsedData = JSON.parse(userData);
+        this.userName = parsedData.name_user || 'User';
+      }
     }
+  },
+  mounted() {
+    this.getUserData();
+  }
 };
 </script>
 

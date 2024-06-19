@@ -1,134 +1,60 @@
-<style scoped>
-#productdetails {
-    font-family: 'Arial', sans-serif;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    padding-top: 150px;
-
-    h1 {
-        text-align: center;
-    }
-}
-
-#productdetails h1,
-#productdetails h2 {
-    color: #333;
-    font-weight: 600;
-}
-
-#container {
-    display: flex;
-    justify-content: center;
-}
-
-.row {
-    display: flex;
-    justify-content: space-between;
-}
-
-.col1,
-.col2 {
-    flex: 1;
-    margin: 40px;
-}
-
-.col1 img {
-    width: 300px;
-    height: auto;
-    display: block;
-}
-
-.calculator {
-    display: flex;
-    align-items: center;
-    margin-top: 20px;
-}
-
-a {
-    text-decoration: none;
-}
-
-.button {
-    background-color: #f2f2f2;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    margin: 0 5px;
-    border-radius: 5px;
-    &:hover {
-        background-color: #4d4d4d;
-        color: white;
-        transition: 0.3s background-color;
-    }
-}
-
-#number {
-    padding: 10px 20px;
-    border: 1px solid #ccc;
-    border-radius:5px; 
-}
-
-.checkout {
-    background-color: #292929;
-    color: white;
-    padding: 15px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 20px;
-    display: block;
-    &:hover{
-        background-color: #0a0303;
-    }
-}
+<style>
+@import "style.css";
 </style>
 
 <template>
-    <nav>
-        <NavMenu />
-    </nav>
+  <nav>
+      <NavMenu />
+  </nav>
 
-    <div id="productdetails">
-        <h1>PRODUCT DETAILS</h1>
-        <div id="container">
-            <div class="row">
-                <div class="col1">
-                    <img src="@/assets/Card1.png" alt="">
-                </div>
-                <div class="col2">
-                    <h2>Antimo Anak Rasa Jeruk Sachet</h2>
-                    <p>Antimo adalah obat yang digunakan untuk mencegah dan meredakan gejala mabuk perjalanan seperti
-                        mual, muntah, dan pusing.</p>
-                    <h2>Anjuran Pakai</h2>
-                    <ol>
-                        <li>1 - 2 kemasan untuk anak-anak usia 2 - 6 tahun</li>
-                        <li>2 kemasan untuk anak-anak usia 6 - 12 tahun</li>
-                        <li><strong>DIMINUM SETELAH MAKAN</strong></li>
-                    </ol>
-                    <!-- quantity -->
-                    <div class="calculator">
-                        <div class="button" @click="changeValue(-1)">-</div>
-                        <div id="number">{{ quantity }}</div>
-                        <div class="button" @click="changeValue(1)">+</div>
-                    </div>
-                    <!-- quantity end-->
-                    <!-- checkout -->
-                    <a href="/Hero">
-                        <button class="checkout">tambah ke keranjang</button>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+  <div id="productdetails">
+      <h1>PRODUCT DETAILS</h1>
+      <div id="container">
+          <div class="row">
+              <div class="col1">
+                  <!-- Use dynamic image if available, otherwise fallback to static image -->
+                  <img :src="`http://localhost:6009${product.image_product}`" :alt="product.name_product">
+              </div>
+              <div class="col2">
+                  <!-- Use dynamic product name if available -->
+                  <h2>{{ product.name_product || 'Product Name' }}</h2>
+                  <!-- Use dynamic description if available -->
+                  <p>{{ product.description_product || 'Product Description' }}</p>
+                  <!-- Use dynamic dosage if available -->
+                  <h2>Anjuran Pakai</h2>
+                  <ul>
+                      <li>{{ product.dose_product || 'Dosage Instructions' }}</li>
+                  </ul>
+                  <!-- Use dynamic side effects if available -->
+                  <h2>efek samping</h2>
+                  <p>{{ product.sideeffects_product || 'Side Effects Information' }}</p>
+                  <!-- Display the calculated total price -->
+                  <h2>Harga</h2>
+                  <p>Rp {{ totalPrice }}</p>
+                  <!-- quantity -->
+                  <div class="calculator">
+                      <div class="button" @click="changeValue(-1)">-</div>
+                      <div id="number">{{ quantity }}</div>
+                      <div class="button" @click="changeValue(1)">+</div>
+                  </div>
+                  <!-- quantity end-->
+                  <!-- checkout -->
+                  <a href="/Hero">
+                      <button class="checkout">tambah ke keranjang</button>
+                  </a>
+              </div>
+          </div>
+      </div>
+  </div>
 
-    <footer>
-        <Footer />
-    </footer>
+  <footer>
+      <Footer />
+  </footer>
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import axios from 'axios';
 import NavMenu from "@/components/NavMenu/NavMenu.vue";
 import Footer from '../Footer/Footer.vue';
 
@@ -139,16 +65,32 @@ export default {
     },
     setup() {
         const quantity = ref(1);
+        const product = ref({});
 
         function changeValue(change) {
             quantity.value += change;
             if (quantity.value < 1) quantity.value = 1; // Prevents quantity from going below 1
         }
 
+        // Computed property to calculate total price
+        const totalPrice = computed(() => {
+            return product.value.price_product ? product.value.price_product * quantity.value : 'Price Information';
+        });
+
         return {
             quantity,
-            changeValue
+            changeValue,
+            product,
+            totalPrice // Make sure to return this
         }
+    },
+    mounted() {
+        const productId = this.$route.params.id;
+        axios.get(`http://localhost:6009/api/product/product/${productId}`)
+          .then(response => {
+            this.product = response.data.data;
+          })
+          .catch(error => console.error('Error:', error));
     }
 };
 </script>
