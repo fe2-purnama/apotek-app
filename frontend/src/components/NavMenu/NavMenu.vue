@@ -67,7 +67,7 @@ methods: {
       const response = await axios.get(`http://localhost:6009/api/product/product/?search=${this.searchQuery}`);
       const products = response.data.data;
       if (products.length > 0) {
-        const productId = products[0]._id; // Assuming you want to redirect to the first matching product
+        const productId = products[0]._id;
         this.$router.push({ name: 'Global', params: { id: productId } });
       } else {
         console.log('No products found');
